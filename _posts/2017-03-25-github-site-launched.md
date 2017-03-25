@@ -1,5 +1,5 @@
 ---
-layout: posts
+layout: post
 title: "Github Site Launched: To replace wordpress"
 date: 2017-03-25
 ---
