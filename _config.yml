@@ -6,10 +6,11 @@ copyright_name: Pauline Chow
 description: "Featuring advice for data science and analytics careers, includig tips, techniques, and projects"
 baseurl: ""
 url: ""
+permalink: /:year/:month/:title
 twitter_username: DataThinker
 github_username:  powchow
 linkedin_username: paulinec
-email_username:  pauline.chow@gmail.com
+email_username:  paulinechowds@gmail.com
 
 # Google Analytics
 # To enable google analytics, uncomment below line with a valid Google Tracking ID
