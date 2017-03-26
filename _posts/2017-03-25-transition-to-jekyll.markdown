@@ -7,6 +7,7 @@ author:     "Pauline"
 header-img: "img/post-bg-04.jpg"
 permalink:  /:year/:month/:title
 comments:   true 
+#tags: 		creative
 ---
 <p>Setting up a new digital space feels like opening up a new toy or present. I convinced myself to make the transition from wordpress, paid hosting service, to jekyll through github pages, free of charge. Free doesn't include my personal time in working on this site. My tech guilt got the best of me. I am slowing moving original content from one place to another and leveraging the opportunity to apply fresh eyes, editing, and technical upgrades. In the two years that I started this blog, I got better at programming and analysis. Still not done with my Computer Science Masters tho...one more year left!</p>
 <p><i>First written in November 2014</i>: Opening new writing space to encourage my own curiosity with data, publish insights on open data sets by public agencies, and document my learnings in computer science. I enrolled in one of Georgia Institute of Technology’s (GeorgiaTech’s) early online masters in computer science degree program and plan to specialize in machine learning. Feedback and insights are much appreciated here.</p>
