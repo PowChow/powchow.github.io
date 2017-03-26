@@ -8,13 +8,12 @@ baseurl: ""
 url: ""
 twitter_username: DataThinker
 github_username:  powchow
-facebook_username:  ""
-linkedin_username: paulinechow
+linkedin_username: paulinec
 email_username:  pauline.chow@gmail.com
 
 # Google Analytics
 # To enable google analytics, uncomment below line with a valid Google Tracking ID
-# google_tracking_id:
+# google_tracking_id: UA-58059508-1
 
 # Build settings
 markdown: kramdown
