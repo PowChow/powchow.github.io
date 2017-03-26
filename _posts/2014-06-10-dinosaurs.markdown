@@ -1,5 +1,6 @@
 ---
 layout:     post
+permalink: /:year/:month/:title
 title:      "Dinosaurs are extinct today"
 subtitle:   "because they lacked opposable thumbs and the brainpower to build a space program."
 date:       2014-06-10 12:00:00

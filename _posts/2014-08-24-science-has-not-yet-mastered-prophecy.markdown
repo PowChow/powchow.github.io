@@ -1,5 +1,6 @@
 ---
 layout:     post
+permalink: /:year/:month/:title
 title:      "Science has not yet mastered prophecy"
 subtitle:   "We predict too much for the next year and yet far too little for the next ten."
 date:       2014-08-24 12:00:00
