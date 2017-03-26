@@ -1,3 +1,26 @@
-name: Pauline Chow
+# Site settings
+title: When There is Data
+header-img: img/home-bg.jpg
+email: pauline.chow@gmail.com
+copyright_name: Pauline Chow
+description: "Featuring advice for data science and analytics careers, includig tips, techniques, and projects"
+baseurl: ""
+url: ""
+twitter_username: DataThinker
+github_username:  powchow
+facebook_username:  ""
+linkedin_username: paulinechow
+email_username:  pauline.chow@gmail.com
+
+# Google Analytics
+# To enable google analytics, uncomment below line with a valid Google Tracking ID
+# google_tracking_id:
+
+# Build settings
 markdown: kramdown
-permalink: /blog/:year/:month/:day/:title
+highlighter: rouge
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems: [jekyll-paginate, jekyll-feed]
