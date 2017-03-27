@@ -7,11 +7,18 @@ author:     "Pauline"
 header-img: "img/post-bg-piggy-bank.jpg"
 permalink:  /:year/:month/la-influence-exchange
 comments:   true 
+categories:
+- Government
+- Open Data
+tags:
+- charts
+- graphs
+- R code
 ---
 <blockquote>
 <p style="text-align: center;">Money can't buy love, but it improves your bargaining position - Christopher Marlowe</p>
 </blockquote>
-<img style="float:right" src="/img/LACity_Lobby_Overtime_All-300x144.png" width="350"/><img style="float:left" src="/img/LACity_Lobby_OverTime_RDout-300x144.png" width="350"/>
+<img style="float: right;" src="/img/LACity_Lobby_Overtime_All-300x144.png" width="350"/><img style="float:left" src="/img/LACity_Lobby_OverTime_RDout-300x144.png" width="350"/>
 <p>The Elizabethan tragedian playwright Christopher Marlowe embodied the contradition between money and love. Money is a consistent alluding factor in politics and complicates accountability. Ethics guidelines exists to create a balance between political office and working for the common good, which is an illusive principle. These guidelines require reporting of certain types of interactions with public officials as a means to shine a light on "<strong>influence exchange</strong>" (analogy to stock exchange).</p>
 <p>What questions are eludicated about lobbyists with the at the City of Los Angeles open data? If you're an accountability seeker than you might ask these questions:</p>
 <ul>

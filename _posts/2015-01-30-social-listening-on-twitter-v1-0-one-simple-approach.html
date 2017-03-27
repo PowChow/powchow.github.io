@@ -1,0 +1,44 @@
+---
+layout:     post
+title:      "Social Listening v1.0"
+subtitle:   "One Simple Approach"
+date:       2015-01-30 12:09:22
+author:     "Pauline"
+header-img: "img/post-bg-bw-happy-sunglasses.jpg"
+permalink:  /:year/:month/social-listening-on-twitter-v1-0-one-simple-approach
+comments: true
+categories:
+- NLP
+- Social Media
+- Twitter
+tags:
+- natural language processing
+---
+<p>
+  <img src="/img/@justinbieber-_plot_val-1024x445.png" width="738" height="321" alt/>
+    <em>My sentiment analysis is broken, people seem to like @justinbieber</em>
+</p>
+
+
+<p><em>Social media</em> has a many layers and, in the business and data senses, it is growing up nicely. Social sharing platforms provides developer access to their data, such as membership interactions and status updates, which can come as emotional outpourings, diatribes, celebrations, and affirmations. Armed with time (most difficult thing to come by on this list), stack overflow, reference materials, and an open source coding tool -- anyone can quickly #oneup your *social media listening* skills. Not a bad skill to flaunt around, since positions managing and creating content on social media are increasing and relevant in every sector and job function. Now, adding the third word - <strong>listening </strong>- gives social media scouring, participating, and downloading another lift in professionalism.</p>
+<p>Most of the time working in only two dimensions is not as fruitful. What other datasets would be useful or interesting to mash up with tweet sentiments?</p>
+<ul>
+<li>Stock market data -- @BarackObama</li>
+<li>Social Stability in Russia/Ukrainian -- @WeAreUkraine</li>
+<li>Canadian and U.S. Relations -- @usahockey</li>
+<li>Additionally, TIL there is Diplomacy tracking on twitter too (per <a style="color:orange" href="http://en.wikipedia.org/wiki/Twitter_diplomacy">wiki</a>)</li>
+</ul>
+<p>I took a great introductory class on <em>social media listening</em> from <a style="color:orange" href="https://generalassemb.ly/">General Assembly in Los Angeles</a> with <span class="screen-name"><a class="pretty-link js-nav" dir="ltr" href="https://twitter.com/kaitlinmaud" data-send-impression-cookie="true"><s>@</s>kaitlinmaud</a>. Kaitlin walked through her process on reviewing brand positioning on social media and marketing channels, as well as shared her through process.  </span></p>
+<p>Inspired by learning more about social listening, I started playing around in R with twitter data. First working out the authentication process and document. Then, figuring out interesting ways to display and combine information. For my data science data products course, I created a shiny app comparing tweets by digital fashion brands, such as @WhoWhatWear, @refinery29, @Fashionista_com: <a style="color:orange" href="https://powchow.shinyapps.io/App-FashionOnTwitter/">Digital Fashion Brands on Twitter</a>. This example demonstrates sentiment analysis of tweets by brand mentions. Text was cleaned and allocated affective ratings from a dictionary of 14,000 English Words. The dictionary was compiled by Amy Warriner and Victor Kuperman, <a style="color:orange" href="http://crr.ugent.be/archives/1003">found here</a>. Simple can be a good approach but upon reviewing this approach for twitter, the algorithm needs more. Warriner's dictionary is not contexualized for colloquial language or the visual nature of words on twitter, thus a <span style="text-decoration: underline;">twitter specific ratings word list</span> would increase accuracy of twitter sentiment in this simple way.</p>
+<p>Notice, this approach in this set of code for sentiment analysis is the most *simple* approach, applying a positive or negative values to a list of single words. In cleaning the text, I removed uppercase, symbols, numbers, and lemmatized the words. In further analysis of sentiments in tweets, grouping of words (ngrams), word relationships to each other, and capitalizing are features that should be added to measure sentiment. *Note to self for v2.0* Also, natural language processing packages in Python have additional options.</p>
+<p>I looked at a list of the top twitter handles and decided to apply this v1.0 of sentiment analysis on famous people. Even if the *simple* approach may have inaccuracies, there is potential value in comparing the outcomes.....perhaps or not. I officially know that this twitter sentiment approach is broken because it tells me people like @justinbieber, @iggyazalea, and @sarahpalinUSA. According to <a style="color:orange" href="http://www.buzzfeed.com/mjs538/why-people-hate-iggy-azalea#.lkMBV3w3mM">BuzzFeed</a>, people are apparently not fans of Ms. Azalea.</p>
+<p>
+  <img src="/img/@ladygaga-_plot_val-300x130.png" width="600" height="300" alt/>
+  <img src="/img/@KatyPerry-_plot_val-300x130.png" width="600" height="300" alt/>
+  <img src="/img/@justinbieber-_plot_val-300x130.png" width="600" height="300" alt/>
+  <img src="/img/@iggyazalea-_plot_val-300x130.png" width="600" height="300" alt/>
+  <img src="/img/@BarakObama-_plot_val-300x130.png" width="600" height="300" alt/>
+  <img src="/img/@SarahPalinUSA-_plot_val-300x130.png" width="600" height="300" alt/>
+</p>
+
+<p>Thanks for post image <a style="color:orange" href="https://unsplash.com/@sethdoylee">Unsplash @sethdoyle</a></p>

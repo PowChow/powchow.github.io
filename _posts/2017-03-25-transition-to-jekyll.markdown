@@ -7,6 +7,8 @@ author:     "Pauline"
 header-img: "img/post-bg-shuttle-takeoff.jpg"
 permalink:  /:year/:month/:title
 comments:   true 
+tags:
+- creative
 ---
 ## Celebration and Jubilations 
 Excited to launch this tech version of the blog. My first blog was about yoga, in which I learned Joomla and set it up on a weekend. Then I transitioned my efforts to wordpress out of a little laziness 
