@@ -23,4 +23,4 @@ A search will yield a lot of resources for transitioning from a blogging tool to
 	- <a href="https://mademistakes.com/articles/using-jekyll-2016/" style="color:orange">More Technical Details</a>
 * After understanding the above resources, find and download a template from the interwebs 
 
-_From the archive November 2014_: Opening new writing space to encourage my own curiosity with data, publish insights on open data sets by public agencies, and document my learnings in computer science. I enrolled in one of Georgia Institute of Technology’s (GeorgiaTech’s) early online masters in computer science degree program and plan to specialize in machine learning. Feedback and insights are much appreciated here.</p>
+_From the archive November 2014_: Opening new writing space to encourage my own curiosity with data, publish insights on open data sets by public agencies, and document my learnings in computer science. I enrolled in one of Georgia Institute of Technology’s (GeorgiaTech’s) early online masters in computer science degree program and plan to specialize in machine learning. Feedback and insights are much appreciated here.

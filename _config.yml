@@ -1,9 +1,9 @@
 # Site settings
-title: When There is Data...
+title: When There is Data
 header-img: img/home-bg.jpg
 email: paulinechowds@gmail.com
 copyright_name: Pauline Chow
-description: "Featuring advice for data science and analytics careers, includig tips, techniques, and projects"
+description: "Advice for data science and analytics careers, includig tips, techniques, and projects"
 baseurl: ""
 url: ""
 twitter_username: DataThinker
