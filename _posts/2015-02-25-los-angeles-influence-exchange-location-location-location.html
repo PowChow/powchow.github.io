@@ -1,4 +1,3 @@
-
 ---
 layout:     post
 title:      "Los Angeles Influence Exchange"
@@ -17,7 +16,6 @@ tags:
 - lobbying
 - Transparency
 ---
-
 <p>As Open Data continues to flow from governmental offices to raise the promise for transparency and engagement, the more the public has to roll up its sleeves to review and evaluate the information. Here, all directions to accountability is paved with good intentions and a significant number of wo(man) hours.What? Do you think insights will be handed to you.</p>
 <p>This post adds to the evolution the City of Los Angeles' Open Data sets and breaths human readability and actionability into the information. My first post on Los Angeles' Influence Exchange explored the contribution of clients to lobbying firms by industry, where I manually created a mapping from client to industry, read more at <a href="http://www.whenthereisdata.com/2014/12/la-influence-exchange/"><em>The City of Los Angeles Influence Exchange (12/2014)</em></a>. It was not especially surprising to discover in the 12/2014 post that Real Estate clients conducted the most influencing activities with local government leaders. AND that is only on paper. In land use and transportation policy context, this makes sense since the land use (such as zoning, variances, and permits) decision-making is concentrated in local governments.</p>
 <p>In this post, I added the locations or project geocodes of where influencing is occurring in the City of Los Angeles. The "<a href="https://data.lacity.org/A-Well-Run-City/CEC-City-Projects-and-Agencies-Lobbied-by-Register/4xuf-944h">CEC City Projects Agencies Lobbied by Registered</a>" provides a well-populated "Location" field, with the local street address of the project or area paid by the client to influence. The Location field was used to pull the latitude and longitude from the <a href="https://developers.google.com/maps/documentation/geocoding/">Google Geocoding API</a>. Then, I leveraged the <a href="http://folium.readthedocs.org/en/latest/">folium package</a> (python and leaflet) to map the projects by year in the City of Los Angeles. Below is an interactive map of projects influenced in 2014, labels of the points are project names or when project name was blank, the field was populated by "client last name." <em>Coming soon, 2013 influenced project data points and link to code. </em></p>
