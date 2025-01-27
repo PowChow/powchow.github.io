@@ -1,15 +1,14 @@
 # Site settings
 title: When There is Data
 header-img: img/home-bg.jpg
-email: paulinechowds@gmail.com
+email: paulinechowcoach@gmail.com
 copyright_name: Pauline Chow
 description: "Advice for data science and analytics careers, includig tips, techniques, and projects"
 baseurl: ""
 url: ""
-twitter_username: DataThinker
 github_username:  powchow
 linkedin_username: paulinec
-email_username:  paulinechowds@gmail.com
+email_username:  paulinechowcoach@gmail.com
 
 # Google Analytics
 # To enable google analytics, uncomment below line with a valid Google Tracking ID
