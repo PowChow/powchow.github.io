@@ -6,7 +6,7 @@ date: 2025-01-27 12:00:00
 author: "Pauline"
 header-img: "img/baby_name_post.jpg"
 categories: [Data Science, Machine Learning]
-permalink:  /:year/:month/:title
+permalink:  /:year/:month/baby-names-optimizing-data-science-features
 comments:   false 
 tags:
 - machine-learning
