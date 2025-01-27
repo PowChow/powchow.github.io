@@ -4,6 +4,7 @@ title: "Baby Names Optimizing Data Science Models"
 subtitle: "Feature Engineering, Cluster Analysis, and Metrics Development"
 date: 2025-01-27 12:00:00
 author: "Pauline"
+header-img: "img/baby_name_post.jpg"
 categories: [Data Science, Machine Learning]
 permalink:  /:year/:month/:title
 comments:   false 
