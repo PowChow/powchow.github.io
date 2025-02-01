@@ -4,7 +4,7 @@ title:      "True Crime Infographic"
 subtitle:   "Cannibalistic Homicides Dataset from 1903 to 2019"
 date:       2024-06-22 12:00:00
 author:     "Pauline"
-header-img: "https://unsplash.com/photos/grayscale-photo-of-concrete-wall-U1KMBH2CN_k"
+header-img: "/img//Users/pauline/Documents/GitHub/powchow.github.io/img/marcin-czerniawski-U1KMBH2CN_k-unsplash.jpg"
 permalink:  /:year/:month/:title
 comments:   false 
 tags:
@@ -15,7 +15,7 @@ tags:
   - horror
   - kaggle
 ---
-
+      
 <p>I love stories. I picked up my first horror book at the public library—<strong>The Fear Street</strong> series by R.L. Stine. Writing and reading fiction helps me process ideas I encounter in the world, like the terrible mainstream news and horrible people I hear about. More so than watching, creating a story helps me understand. I think this is why I like working with data. Getting into the nitty-gritty, fine-tuning the facts, and drilling down below the surface are meditative.</p>
 
 <p>A YouGov poll found that 61% of women consume true crime content, compared to 52% of men. 
@@ -36,3 +36,5 @@ The dataset contains 121 cannibals and their 631 victims, collected by <a href="
 <p align="center">
   <img src="/img/Infographic_Cannibals1903-2019_byPC.png" width="45%" />
 </p>
+
+Header Photo by <a href="https://unsplash.com/@marcin777?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">MARCIN CZERNIAWSKI</a> on <a href="https://unsplash.com/photos/grayscale-photo-of-concrete-wall-U1KMBH2CN_k?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
