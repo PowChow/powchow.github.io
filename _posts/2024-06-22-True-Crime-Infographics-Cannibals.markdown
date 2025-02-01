@@ -34,5 +34,5 @@ The dataset contains 121 cannibals and their 631 victims, collected by <a href="
 </ul>
 
 <p align="center">
-  <img src="/Infographic_Cannibals1903-2019_byPC.png" width="45%" />
+  <img src="/img/Infographic_Cannibals1903-2019_byPC.png" width="45%" />
 </p>
