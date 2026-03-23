@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Word Associations — Alice in Wonderland</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-chord@3"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      background: #0c0e10;
+      color: #dde8f0;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      grid-template-rows: auto 1fr;
+      min-height: 100vh;
+    }
+
+    header {
+      grid-column: 1 / -1;
+      padding: 18px 32px 10px;
+      border-bottom: 1px solid #1e2730;
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+    }
+    header h1 { font-size: 1.15rem; color: #5bbfde; letter-spacing: 0.08em; }
+    header .sub { font-size: 11px; color: #4a6070; }
+
+    #sort-btns { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+    #sort-btns span { font-size: 10px; color: #4a6070; }
+    .sort-btn {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid #2a3a48;
+      background: transparent;
+      color: #6a8a9a;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .sort-btn.active { color: #5bbfde; border-color: #5bbfde; }
+
+    #chord-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    #chord-svg { display: block; }
+
+    .group-arc   { cursor: pointer; stroke: #0c0e10; stroke-width: 1.5px; }
+    .ribbon      { cursor: pointer; transition: fill-opacity 0.15s; }
+    .ribbon:hover { stroke: #fff; stroke-width: 1px; fill-opacity: 0.92 !important; }
+    .ribbon.dimmed { fill-opacity: 0.06 !important; }
+    .group-label { pointer-events: none; font-size: 11px; }
+
+    #sidebar {
+      border-left: 1px solid #1e2730;
+      padding: 20px 18px;
+      overflow-y: auto;
+      max-height: calc(100vh - 56px);
+    }
+    #sidebar h2 { font-size: 10px; color: #4a6070; letter-spacing: 0.12em; margin-bottom: 14px; text-transform: uppercase; }
+
+    .pair-card {
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #141c22;
+    }
+    .pair-card .quote {
+      font-style: italic;
+      font-size: 12px;
+      color: #a8c8da;
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+    .pair-card .meta {
+      font-size: 10px;
+      color: #4a6070;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .pair-card .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .count-badge {
+      font-size: 9px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      background: #0e1a24;
+      color: #5bbfde;
+      border: 1px solid #1e3040;
+      letter-spacing: 0.04em;
+    }
+
+    #tooltip {
+      position: fixed;
+      padding: 8px 12px;
+      background: rgba(5, 12, 18, 0.95);
+      border: 1px solid #2a4a60;
+      border-radius: 6px;
+      font-size: 12px;
+      max-width: 280px;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 99;
+      line-height: 1.7;
+    }
+    #tooltip .tp-pair { color: #5bbfde; font-weight: bold; margin-bottom: 4px; }
+    #tooltip .tp-count { color: #4a6070; font-size: 10px; }
+
+    #no-data {
+      grid-column: 1 / -1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 60px; color: #4a6070; font-size: 14px; line-height: 2;
+    }
+    #no-data code { background: #111a22; padding: 2px 6px; border-radius: 3px; color: #aaa; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Word Associations — Alice in Wonderland</h1>
+    <span class="sub" id="hdr-sub">Loading…</span>
+    <div id="sort-btns">
+      <span>Sort:</span>
+      <button class="sort-btn active" data-sort="freq">By frequency</button>
+      <button class="sort-btn"        data-sort="alpha">Alphabetical</button>
+    </div>
+  </header>
+
+  <div id="chord-wrap">
+    <svg id="chord-svg" width="640" height="640"></svg>
+  </div>
+
+  <div id="sidebar">
+    <h2>Co-occurring pairs</h2>
+    <div id="pair-list"></div>
+  </div>
+
+  <div id="tooltip"></div>
+
+  <script>
+    const tooltip   = document.getElementById("tooltip");
+    const hideTooltip = () => { tooltip.style.opacity = 0; };
+
+    // Palette — cool blue-green tones to match the night-sky theme
+    const BASE_COLORS = [
+      "#5bbfde","#3ecf8e","#c87dff","#f0a050","#e06070",
+      "#78c8b0","#a8d890","#d4a8f0","#f0c860","#70b8e8",
+      "#e88070","#88d4c0","#b8e888","#e0c0ff","#f0d880",
+      "#60a8d8","#d870a0","#98e0b0","#f0a880","#80c8f0",
+      "#c8e870","#d898d8"
+    ];
+    const colorOf = i => BASE_COLORS[i % BASE_COLORS.length];
+
+    let ALL_DATA   = null;
+    let activeSort = "freq";
+
+    // ── Draw ──────────────────────────────────────────────────────────────────
+    function draw(data, sort) {
+      // Determine term order
+      let terms;
+      if (sort === "alpha") {
+        terms = [...data.terms].sort();
+      } else {
+        // default: order from JSON (already sorted by noun frequency)
+        terms = data.terms;
+      }
+
+      const labels  = data.labels || terms.map(t => t.charAt(0).toUpperCase() + t.slice(1));
+      const labelOf = t => labels[data.terms.indexOf(t)] || t;
+
+      const n       = terms.length;
+      const termIdx = {};
+      terms.forEach((t, i) => { termIdx[t] = i; });
+
+      // Symmetric matrix weighted by co-occurrence count
+      const matrix = Array.from({ length: n }, () => new Array(n).fill(0));
+      data.pairs.forEach(p => {
+        const i = termIdx[p.source], j = termIdx[p.target];
+        if (i != null && j != null && i !== j) {
+          matrix[i][j] += p.count;
+          matrix[j][i] += p.count;   // symmetric — co-occurrence has no direction
+        }
+      });
+
+      // Lookup: both directions
+      const lookup = {};
+      data.pairs.forEach(p => {
+        const i = termIdx[p.source], j = termIdx[p.target];
+        if (i == null || j == null) return;
+        const k1 = `${i}-${j}`, k2 = `${j}-${i}`;
+        if (!lookup[k1]) lookup[k1] = p;
+        if (!lookup[k2]) lookup[k2] = p;
+      });
+
+      const W = 640, H = 640;
+      const outerR = Math.min(W, H) / 2 - 60;
+      const innerR = outerR - 20;
+
+      // Symmetric chord (not directed)
+      const chordFn = d3.chord()
+        .padAngle(0.04)
+        .sortSubgroups(d3.descending)
+        .sortChords(d3.descending);
+      const chords = chordFn(matrix);
+      const groups = chords.groups || [];
+      const ribbons = chords.filter(d => d.source && d.target &&
+        (d.source.value > 0 || d.target.value > 0));
+
+      const arc    = d3.arc().innerRadius(innerR).outerRadius(outerR);
+      const ribbon = d3.ribbon().radius(innerR - 2);
+
+      const svg = d3.select("#chord-svg")
+        .attr("viewBox", [0, 0, W, H]).html("");
+      const g = svg.append("g").attr("transform", `translate(${W/2},${H/2})`);
+
+      if (ribbons.length === 0) {
+        svg.append("text").attr("x", W/2).attr("y", H/2)
+          .attr("text-anchor","middle").attr("fill","#4a6070")
+          .text("No pairs to show.");
+        return;
+      }
+
+      // Ribbons (draw first so arcs sit on top)
+      const ribbonPaths = g.append("g").selectAll("path")
+        .data(ribbons).join("path")
+        .attr("class", "ribbon")
+        .attr("d", ribbon)
+        .attr("fill", d => colorOf(d.source.index))
+        .attr("fill-opacity", 0.5)
+        .on("mouseover", (e, d) => {
+          const si = d.source.index, ti = d.target.index;
+          const p  = lookup[`${si}-${ti}`];
+          if (!p) return;
+          tooltip.innerHTML =
+            `<div class="tp-pair">${labelOf(terms[si])} + ${labelOf(terms[ti])}</div>` +
+            `<div class="tp-count">co-occurs ${p.count}×</div>` +
+            (p.quote ? `<br><em style="color:#a8c8da">"${p.quote}"</em>` : "");
+          tooltip.style.opacity = 1;
+          tooltip.style.left = (e.pageX + 14) + "px";
+          tooltip.style.top  = (e.pageY + 8)  + "px";
+          ribbonPaths.classed("dimmed", r => r !== d);
+        })
+        .on("mouseout", () => { hideTooltip(); ribbonPaths.classed("dimmed", false); });
+
+      // Arcs
+      g.append("g").selectAll("path")
+        .data(groups).join("path")
+        .attr("class", "group-arc")
+        .attr("d", arc)
+        .attr("fill", d => colorOf(d.index))
+        .attr("fill-opacity", 0.9)
+        .on("mouseover", (e, d) => {
+          // show all pairs for this node
+          const node = terms[d.index];
+          const nodePairs = data.pairs.filter(p => p.source === node || p.target === node)
+            .sort((a, b) => b.count - a.count).slice(0, 5);
+          tooltip.innerHTML =
+            `<strong style="color:${colorOf(d.index)}">${labelOf(node)}</strong>` +
+            `<div class="tp-count" style="margin-top:4px">appears with:</div>` +
+            nodePairs.map(p => {
+              const other = p.source === node ? p.target : p.source;
+              return `<span style="color:${colorOf(termIdx[other] ?? 0)}">${labelOf(other)}</span>` +
+                     ` <span style="color:#4a6070">×${p.count}</span>`;
+            }).join(" &nbsp;·&nbsp; ");
+          tooltip.style.opacity = 1;
+          tooltip.style.left = (e.pageX + 14) + "px";
+          tooltip.style.top  = (e.pageY + 8)  + "px";
+          ribbonPaths.classed("dimmed", r =>
+            r.source.index !== d.index && r.target.index !== d.index);
+        })
+        .on("mouseout", () => { hideTooltip(); ribbonPaths.classed("dimmed", false); });
+
+      // Labels — horizontal, anchored left/right, hidden when arc is tiny
+      const minArcSpan = 0.12;   // radians — skip label if arc smaller than this
+      g.append("g").selectAll("text")
+        .data(groups).join("text")
+        .attr("class", "group-label")
+        .attr("transform", d => {
+          const a   = (d.startAngle + d.endAngle) / 2 - Math.PI / 2;
+          const r   = outerR + 22;
+          return `translate(${Math.cos(a) * r},${Math.sin(a) * r})`;
+        })
+        .attr("text-anchor", d => {
+          const a = (d.startAngle + d.endAngle) / 2 - Math.PI / 2;
+          // right half → start, left half → end, near top/bottom → middle
+          if (Math.abs(Math.cos(a)) < 0.15) return "middle";
+          return Math.cos(a) > 0 ? "start" : "end";
+        })
+        .attr("dy", "0.35em")
+        .attr("fill", d => colorOf(d.index))
+        .attr("opacity", d => (d.endAngle - d.startAngle) < minArcSpan ? 0 : 1)
+        .text(d => labelOf(terms[d.index]));
+
+      // ── Sidebar ──────────────────────────────────────────────────────────────
+      const listEl   = document.getElementById("pair-list");
+      listEl.innerHTML = "";
+      const sorted = [...data.pairs].sort((a, b) => b.count - a.count);
+      sorted.slice(0, 60).forEach(p => {
+        const i = termIdx[p.source];
+        const div = document.createElement("div");
+        div.className = "pair-card";
+        div.innerHTML = `
+          <div class="quote">${p.quote ? `"${p.quote}"` : "<em style='color:#4a6070'>—</em>"}</div>
+          <div class="meta">
+            <span class="dot" style="background:${colorOf(i ?? 0)}"></span>
+            <strong>${labelOf(p.source)}</strong>
+            <span style="color:#2a4a60;margin:0 3px">+</span>
+            <strong>${labelOf(p.target)}</strong>
+            <span class="count-badge">×${p.count}</span>
+          </div>`;
+        listEl.appendChild(div);
+      });
+      if (data.pairs.length > 60) {
+        const more = document.createElement("div");
+        more.style.cssText = "font-size:10px;color:#4a6070;padding:6px 0";
+        more.textContent = `… and ${data.pairs.length - 60} more`;
+        listEl.appendChild(more);
+      }
+    }
+
+    // ── Header ────────────────────────────────────────────────────────────────
+    function updateHeader(data) {
+      document.getElementById("hdr-sub").textContent =
+        `${data.text}  ·  ${data.pairs.length} pairs  ·  top ${data.terms.length} nouns`;
+    }
+
+    // ── Sort buttons ──────────────────────────────────────────────────────────
+    document.querySelectorAll(".sort-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".sort-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeSort = btn.dataset.sort;
+        if (ALL_DATA) draw(ALL_DATA, activeSort);
+      });
+    });
+
+    // ── Load ──────────────────────────────────────────────────────────────────
+    d3.json("word_assoc.json")
+      .then(data => {
+        ALL_DATA = data;
+        updateHeader(data);
+        draw(data, activeSort);
+      })
+      .catch(() => {
+        document.body.innerHTML = `
+          <div id="no-data">
+            <p><strong style="color:#c66">word_assoc.json not found.</strong></p>
+            <p>Run the extractor first:</p>
+            <p><code>python extract_word_assoc.py</code></p>
+            <p>Then refresh (served via <code>python -m http.server 8765</code>).</p>
+          </div>`;
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,2432 @@
+{
+  "books": [
+    {
+      "id": "alice",
+      "title": "Alice's Adventures in Wonderland",
+      "author": "Lewis Carroll",
+      "author_gender": "male",
+      "year": 1865,
+      "period": "pre_1920",
+      "protagonist": "alice",
+      "counts": {
+        "agent": 125,
+        "passive": 0,
+        "patient": 236
+      },
+      "ratio": 0.346,
+      "mentions": 361,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "went",
+            "count": 6
+          },
+          {
+            "verb": "ventured",
+            "count": 4
+          },
+          {
+            "verb": "waited",
+            "count": 3
+          },
+          {
+            "verb": "took",
+            "count": 2
+          },
+          {
+            "verb": "remarked",
+            "count": 2
+          },
+          {
+            "verb": "see",
+            "count": 2
+          },
+          {
+            "verb": "opened",
+            "count": 1
+          },
+          {
+            "verb": "led",
+            "count": 1
+          },
+          {
+            "verb": "allow",
+            "count": 1
+          },
+          {
+            "verb": "kept",
+            "count": 1
+          },
+          {
+            "verb": "turned",
+            "count": 1
+          },
+          {
+            "verb": "folded",
+            "count": 1
+          },
+          {
+            "verb": "remained",
+            "count": 1
+          },
+          {
+            "verb": "crouched",
+            "count": 1
+          },
+          {
+            "verb": "laughed",
+            "count": 1
+          },
+          {
+            "verb": "jumped",
+            "count": 1
+          },
+          {
+            "verb": "glanced",
+            "count": 1
+          },
+          {
+            "verb": "caught",
+            "count": 1
+          },
+          {
+            "verb": "considered",
+            "count": 1
+          },
+          {
+            "verb": "sighed",
+            "count": 1
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "turning",
+            "count": 6
+          },
+          {
+            "verb": "made",
+            "count": 3
+          },
+          {
+            "verb": "came",
+            "count": 3
+          },
+          {
+            "verb": "went",
+            "count": 2
+          },
+          {
+            "verb": "pleaded",
+            "count": 2
+          },
+          {
+            "verb": "looking",
+            "count": 2
+          },
+          {
+            "verb": "hurried",
+            "count": 1
+          },
+          {
+            "verb": "see",
+            "count": 1
+          },
+          {
+            "verb": "locked",
+            "count": 1
+          },
+          {
+            "verb": "happened",
+            "count": 1
+          },
+          {
+            "verb": "cake",
+            "count": 1
+          },
+          {
+            "verb": "pointing",
+            "count": 1
+          },
+          {
+            "verb": "moved",
+            "count": 1
+          },
+          {
+            "verb": "wonder",
+            "count": 1
+          },
+          {
+            "verb": "seems",
+            "count": 1
+          },
+          {
+            "verb": "opened",
+            "count": 1
+          },
+          {
+            "verb": "worry",
+            "count": 1
+          },
+          {
+            "verb": "pleasing",
+            "count": 1
+          },
+          {
+            "verb": "speaking",
+            "count": 1
+          },
+          {
+            "verb": "howled",
+            "count": 1
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "EBOOK ALICE'S ADVENTURES IN WONDERLAND *** [Illustration] Alice\u2019s Adventures in Wonderland by Lewis Carroll TH\u2026",
+          "Alice\u2019s Evidence CHAPTER I.",
+          "But do cats eat bats, I wonder?\u201d And here Alice began to get rather sleepy, and went on saying to herself, in \u2026"
+        ],
+        "passive": [],
+        "patient": [
+          "Down the Rabbit-Hole Alice was beginning to get very tired of sitting by her sister on the bank, and of having\u2026",
+          "There was nothing so _very_ remarkable in that; nor did Alice think it so _very_ much out of the way to hear t\u2026",
+          "I shall be late!\u201d (when she thought it over afterwards, it occurred to her that she ought to have wondered at \u2026"
+        ]
+      }
+    },
+    {
+      "id": "awakening",
+      "title": "The Awakening",
+      "author": "Kate Chopin",
+      "author_gender": "female",
+      "year": 1899,
+      "period": "pre_1920",
+      "protagonist": "edna",
+      "counts": {
+        "agent": 139,
+        "passive": 0,
+        "patient": 175
+      },
+      "ratio": 0.443,
+      "mentions": 314,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "went",
+            "count": 5
+          },
+          {
+            "verb": "sent",
+            "count": 3
+          },
+          {
+            "verb": "sat",
+            "count": 3
+          },
+          {
+            "verb": "hastened",
+            "count": 2
+          },
+          {
+            "verb": "admired",
+            "count": 2
+          },
+          {
+            "verb": "hear",
+            "count": 2
+          },
+          {
+            "verb": "arose",
+            "count": 2
+          },
+          {
+            "verb": "left",
+            "count": 2
+          },
+          {
+            "verb": "bit",
+            "count": 2
+          },
+          {
+            "verb": "stayed",
+            "count": 2
+          },
+          {
+            "verb": "entered",
+            "count": 2
+          },
+          {
+            "verb": "seated",
+            "count": 2
+          },
+          {
+            "verb": "forget",
+            "count": 1
+          },
+          {
+            "verb": "removed",
+            "count": 1
+          },
+          {
+            "verb": "casting",
+            "count": 1
+          },
+          {
+            "verb": "liked",
+            "count": 1
+          },
+          {
+            "verb": "awoke",
+            "count": 1
+          },
+          {
+            "verb": "dabbed",
+            "count": 1
+          },
+          {
+            "verb": "took",
+            "count": 1
+          },
+          {
+            "verb": "having",
+            "count": 1
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "made",
+            "count": 3
+          },
+          {
+            "verb": "offered",
+            "count": 3
+          },
+          {
+            "verb": "persisted",
+            "count": 2
+          },
+          {
+            "verb": "carried",
+            "count": 2
+          },
+          {
+            "verb": "played",
+            "count": 2
+          },
+          {
+            "verb": "kissed",
+            "count": 2
+          },
+          {
+            "verb": "take",
+            "count": 2
+          },
+          {
+            "verb": "gave",
+            "count": 2
+          },
+          {
+            "verb": "laughed",
+            "count": 2
+          },
+          {
+            "verb": "bores",
+            "count": 1
+          },
+          {
+            "verb": "attracted",
+            "count": 1
+          },
+          {
+            "verb": "patted",
+            "count": 1
+          },
+          {
+            "verb": "feared",
+            "count": 1
+          },
+          {
+            "verb": "doing",
+            "count": 1
+          },
+          {
+            "verb": "overcome",
+            "count": 1
+          },
+          {
+            "verb": "make",
+            "count": 1
+          },
+          {
+            "verb": "remain",
+            "count": 1
+          },
+          {
+            "verb": "fallen",
+            "count": 1
+          },
+          {
+            "verb": "bade",
+            "count": 1
+          },
+          {
+            "verb": "reminded",
+            "count": 1
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "Never would Edna Pontellier forget the shock with which she heard Madame Ratignolle relating to old Monsieur F\u2026",
+          "VI Edna Pontellier could not have told why, wishing to go to the beach with Robert, she should in the first pl\u2026",
+          "Edna had prevailed upon Madame Ratignolle to leave the children behind, though she could not induce her to rel\u2026"
+        ],
+        "passive": [],
+        "patient": [
+          "\u201cWell, send him about his business when he bores you, Edna,\u201d instructed her husband as he prepared to leave.",
+          "The excessive physical charm of the Creole had first attracted her, for Edna had a sensuous susceptibility to \u2026",
+          "The charm of Edna Pontellier\u2019s physique stole insensibly upon you."
+        ]
+      }
+    },
+    {
+      "id": "house_of_mirth",
+      "title": "The House of Mirth",
+      "author": "Edith Wharton",
+      "author_gender": "female",
+      "year": 1905,
+      "period": "pre_1920",
+      "protagonist": "lily",
+      "counts": {
+        "agent": 317,
+        "passive": 0,
+        "patient": 438
+      },
+      "ratio": 0.42,
+      "mentions": 755,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "smiled",
+            "count": 5
+          },
+          {
+            "verb": "stood",
+            "count": 5
+          },
+          {
+            "verb": "went",
+            "count": 3
+          },
+          {
+            "verb": "rose",
+            "count": 3
+          },
+          {
+            "verb": "woke",
+            "count": 3
+          },
+          {
+            "verb": "sat",
+            "count": 3
+          },
+          {
+            "verb": "made",
+            "count": 2
+          },
+          {
+            "verb": "obeyed",
+            "count": 2
+          },
+          {
+            "verb": "considered",
+            "count": 2
+          },
+          {
+            "verb": "dropped",
+            "count": 2
+          },
+          {
+            "verb": "shook",
+            "count": 2
+          },
+          {
+            "verb": "oppressed",
+            "count": 2
+          },
+          {
+            "verb": "turned",
+            "count": 2
+          },
+          {
+            "verb": "sprang",
+            "count": 2
+          },
+          {
+            "verb": "hesitated",
+            "count": 2
+          },
+          {
+            "verb": "met",
+            "count": 2
+          },
+          {
+            "verb": "walked",
+            "count": 2
+          },
+          {
+            "verb": "remember",
+            "count": 1
+          },
+          {
+            "verb": "recall",
+            "count": 1
+          },
+          {
+            "verb": "wandered",
+            "count": 1
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "made",
+            "count": 7
+          },
+          {
+            "verb": "struck",
+            "count": 3
+          },
+          {
+            "verb": "filled",
+            "count": 2
+          },
+          {
+            "verb": "appeared",
+            "count": 2
+          },
+          {
+            "verb": "restored",
+            "count": 2
+          },
+          {
+            "verb": "occurred",
+            "count": 2
+          },
+          {
+            "verb": "know",
+            "count": 2
+          },
+          {
+            "verb": "left",
+            "count": 2
+          },
+          {
+            "verb": "seen",
+            "count": 2
+          },
+          {
+            "verb": "gave",
+            "count": 2
+          },
+          {
+            "verb": "turned",
+            "count": 2
+          },
+          {
+            "verb": "knowing",
+            "count": 2
+          },
+          {
+            "verb": "gone",
+            "count": 2
+          },
+          {
+            "verb": "look",
+            "count": 2
+          },
+          {
+            "verb": "remained",
+            "count": 2
+          },
+          {
+            "verb": "set",
+            "count": 2
+          },
+          {
+            "verb": "brought",
+            "count": 2
+          },
+          {
+            "verb": "done",
+            "count": 2
+          },
+          {
+            "verb": "enjoyed",
+            "count": 1
+          },
+          {
+            "verb": "delighted",
+            "count": 1
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "Lily sank with a sigh into one of the shabby leather chairs.",
+          "Lily felt herself flushing under the look.",
+          "Lily was sure that within twenty-four hours the story of her visiting her dress-maker at the Benedick would be\u2026"
+        ],
+        "passive": [],
+        "patient": [
+          "In the afternoon rush of the Grand Central Station his eyes had been refreshed by the sight of Miss Lily Bart.",
+          "There was nothing new about Lily Bart, yet he could never see her without a faint movement of interest: it was\u2026",
+          "As a spectator, he had always enjoyed Lily Bart; and his course lay so far out of her orbit that it amused him\u2026"
+        ]
+      }
+    },
+    {
+      "id": "summer",
+      "title": "Summer",
+      "author": "Edith Wharton",
+      "author_gender": "female",
+      "year": 1917,
+      "period": "pre_1920",
+      "protagonist": "charity",
+      "counts": {
+        "agent": 178,
+        "passive": 0,
+        "patient": 158
+      },
+      "ratio": 0.53,
+      "mentions": 336,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "sat",
+            "count": 7
+          },
+          {
+            "verb": "stood",
+            "count": 6
+          },
+          {
+            "verb": "went",
+            "count": 3
+          },
+          {
+            "verb": "made",
+            "count": 2
+          },
+          {
+            "verb": "got",
+            "count": 2
+          },
+          {
+            "verb": "came",
+            "count": 2
+          },
+          {
+            "verb": "followed",
+            "count": 2
+          },
+          {
+            "verb": "paused",
+            "count": 2
+          },
+          {
+            "verb": "ruled",
+            "count": 1
+          },
+          {
+            "verb": "recall",
+            "count": 1
+          },
+          {
+            "verb": "observed",
+            "count": 1
+          },
+          {
+            "verb": "cut",
+            "count": 1
+          },
+          {
+            "verb": "let",
+            "count": 1
+          },
+          {
+            "verb": "smouldering",
+            "count": 1
+          },
+          {
+            "verb": "held",
+            "count": 1
+          },
+          {
+            "verb": "shot",
+            "count": 1
+          },
+          {
+            "verb": "suspected",
+            "count": 1
+          },
+          {
+            "verb": "flagged",
+            "count": 1
+          },
+          {
+            "verb": "smiled",
+            "count": 1
+          },
+          {
+            "verb": "dropped",
+            "count": 1
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "turned",
+            "count": 4
+          },
+          {
+            "verb": "came",
+            "count": 3
+          },
+          {
+            "verb": "paused",
+            "count": 2
+          },
+          {
+            "verb": "know",
+            "count": 2
+          },
+          {
+            "verb": "stood",
+            "count": 2
+          },
+          {
+            "verb": "took",
+            "count": 2
+          },
+          {
+            "verb": "smiled",
+            "count": 2
+          },
+          {
+            "verb": "read",
+            "count": 2
+          },
+          {
+            "verb": "christened",
+            "count": 1
+          },
+          {
+            "verb": "waiting",
+            "count": 1
+          },
+          {
+            "verb": "suppose",
+            "count": 1
+          },
+          {
+            "verb": "followed",
+            "count": 1
+          },
+          {
+            "verb": "learned",
+            "count": 1
+          },
+          {
+            "verb": "doddering",
+            "count": 1
+          },
+          {
+            "verb": "caused",
+            "count": 1
+          },
+          {
+            "verb": "evening",
+            "count": 1
+          },
+          {
+            "verb": "talk",
+            "count": 1
+          },
+          {
+            "verb": "raise",
+            "count": 1
+          },
+          {
+            "verb": "helped",
+            "count": 1
+          },
+          {
+            "verb": "wrapping",
+            "count": 1
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "Yet Charity Royall had always been told that she ought to consider it a privilege that her lot had been cast i\u2026",
+          "Charity was not very clear about the Mountain; but she knew it was a bad place, and a shame to have come from,\u2026",
+          "II The hours of the Hatchard Memorial librarian were from three to five; and Charity Royall's sense of duty us\u2026"
+        ],
+        "passive": [],
+        "patient": [
+          "In the course of that incredible day Charity Royall had, for the first and only time, experienced railway-trav\u2026",
+          "Such had been the sole link between North Dormer and literature, a link piously commemorated by the erection o\u2026",
+          "She was not an expert workwoman, and it had taken her many weeks to make the half-yard of narrow lace which sh\u2026"
+        ]
+      }
+    },
+    {
+      "id": "my_antonia",
+      "title": "My Antonia",
+      "author": "Willa Cather",
+      "author_gender": "female",
+      "year": 1918,
+      "period": "pre_1920",
+      "protagonist": "tony",
+      "counts": {
+        "agent": 36,
+        "passive": 0,
+        "patient": 36
+      },
+      "ratio": 0.5,
+      "mentions": 72,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "made",
+            "count": 2
+          },
+          {
+            "verb": "shook",
+            "count": 1
+          },
+          {
+            "verb": "panted",
+            "count": 1
+          },
+          {
+            "verb": "ran",
+            "count": 1
+          },
+          {
+            "verb": "sat",
+            "count": 1
+          },
+          {
+            "verb": "left",
+            "count": 1
+          },
+          {
+            "verb": "slipped",
+            "count": 1
+          },
+          {
+            "verb": "talk",
+            "count": 1
+          },
+          {
+            "verb": "learned",
+            "count": 1
+          },
+          {
+            "verb": "dropped",
+            "count": 1
+          },
+          {
+            "verb": "knows",
+            "count": 1
+          },
+          {
+            "verb": "rush",
+            "count": 1
+          },
+          {
+            "verb": "wore",
+            "count": 1
+          },
+          {
+            "verb": "resting",
+            "count": 1
+          },
+          {
+            "verb": "wiped",
+            "count": 1
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "nice",
+            "count": 1
+          },
+          {
+            "verb": "crazy",
+            "count": 1
+          },
+          {
+            "verb": "came",
+            "count": 1
+          },
+          {
+            "verb": "liked",
+            "count": 1
+          },
+          {
+            "verb": "helping",
+            "count": 1
+          },
+          {
+            "verb": "hear",
+            "count": 1
+          },
+          {
+            "verb": "meet",
+            "count": 1
+          },
+          {
+            "verb": "invite",
+            "count": 1
+          },
+          {
+            "verb": "teach",
+            "count": 1
+          },
+          {
+            "verb": "wanted",
+            "count": 1
+          },
+          {
+            "verb": "waiting",
+            "count": 1
+          },
+          {
+            "verb": "wrote",
+            "count": 1
+          },
+          {
+            "verb": "write",
+            "count": 1
+          },
+          {
+            "verb": "suited",
+            "count": 1
+          },
+          {
+            "verb": "gone",
+            "count": 1
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "Tony was barefooted, and she shivered in her cotton dress and was comfortable only when we were tucked down on\u2026",
+          "Tony made a warm nest for him in her hands; talked to him gaily and indulgently in Bohemian.",
+          "I offered my pockets, but Tony shook her head and carefully put the green insect in her hair, tying her big ha\u2026"
+        ],
+        "passive": [],
+        "patient": [
+          "I came to ask you something, Tony.",
+          "\u2018Why aren\u2019t you always nice like this, Tony?\u2019 \u2018How nice?\u2019 \u2018Why, just like this; like yourself.",
+          "I was jealous of Tony\u2019s admiration for Charley Harling."
+        ]
+      }
+    },
+    {
+      "id": "age_of_innocence",
+      "title": "The Age of Innocence",
+      "author": "Edith Wharton",
+      "author_gender": "female",
+      "year": 1920,
+      "period": "at_1920",
+      "protagonist": "ellen",
+      "counts": {
+        "agent": 26,
+        "passive": 0,
+        "patient": 97
+      },
+      "ratio": 0.211,
+      "mentions": 123,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "bent",
+            "count": 1
+          },
+          {
+            "verb": "made",
+            "count": 1
+          },
+          {
+            "verb": "wrote",
+            "count": 1
+          },
+          {
+            "verb": "came",
+            "count": 1
+          },
+          {
+            "verb": "waited",
+            "count": 1
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "see",
+            "count": 4
+          },
+          {
+            "verb": "talk",
+            "count": 2
+          },
+          {
+            "verb": "came",
+            "count": 2
+          },
+          {
+            "verb": "marry",
+            "count": 2
+          },
+          {
+            "verb": "know",
+            "count": 2
+          },
+          {
+            "verb": "think",
+            "count": 2
+          },
+          {
+            "verb": "telegraph",
+            "count": 2
+          },
+          {
+            "verb": "meet",
+            "count": 2
+          },
+          {
+            "verb": "tell",
+            "count": 1
+          },
+          {
+            "verb": "met",
+            "count": 1
+          },
+          {
+            "verb": "alluded",
+            "count": 1
+          },
+          {
+            "verb": "finish",
+            "count": 1
+          },
+          {
+            "verb": "shook",
+            "count": 1
+          },
+          {
+            "verb": "departed",
+            "count": 1
+          },
+          {
+            "verb": "showed",
+            "count": 1
+          },
+          {
+            "verb": "pass",
+            "count": 1
+          },
+          {
+            "verb": "want",
+            "count": 1
+          },
+          {
+            "verb": "pleaded",
+            "count": 1
+          },
+          {
+            "verb": "persuading",
+            "count": 1
+          },
+          {
+            "verb": "fear",
+            "count": 1
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "Archer bowed without extending his hand, as was the custom on being introduced to a lady; and Ellen Olenska be\u2026",
+          "\"Poor Ellen,\" she simply remarked; adding compassionately: \"We must always bear in mind what an eccentric brin\u2026",
+          "\"Hang Ellen Olenska!\""
+        ],
+        "passive": [],
+        "patient": [
+          "But they had; they undoubtedly had; for the low-toned comments behind him left no doubt in Archer's mind that \u2026",
+          "Archer knew that she had suddenly arrived from Europe a day or two previously; he had even heard from Miss Wel\u2026",
+          "No appeal could have found a more immediate response in Archer's breast; but he wished that the necessity of t\u2026"
+        ]
+      }
+    },
+    {
+      "id": "main_street",
+      "title": "Main Street",
+      "author": "Sinclair Lewis",
+      "author_gender": "male",
+      "year": 1920,
+      "period": "at_1920",
+      "protagonist": "carol",
+      "counts": {
+        "agent": 334,
+        "passive": 0,
+        "patient": 390
+      },
+      "ratio": 0.461,
+      "mentions": 724,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "tried",
+            "count": 5
+          },
+          {
+            "verb": "walked",
+            "count": 3
+          },
+          {
+            "verb": "glanced",
+            "count": 3
+          },
+          {
+            "verb": "went",
+            "count": 3
+          },
+          {
+            "verb": "listened",
+            "count": 2
+          },
+          {
+            "verb": "ached",
+            "count": 2
+          },
+          {
+            "verb": "waited",
+            "count": 2
+          },
+          {
+            "verb": "liked",
+            "count": 2
+          },
+          {
+            "verb": "suggested",
+            "count": 2
+          },
+          {
+            "verb": "perceived",
+            "count": 2
+          },
+          {
+            "verb": "prepared",
+            "count": 2
+          },
+          {
+            "verb": "sat",
+            "count": 2
+          },
+          {
+            "verb": "read",
+            "count": 2
+          },
+          {
+            "verb": "hinted",
+            "count": 2
+          },
+          {
+            "verb": "turned",
+            "count": 2
+          },
+          {
+            "verb": "inquired",
+            "count": 2
+          },
+          {
+            "verb": "took",
+            "count": 2
+          },
+          {
+            "verb": "died",
+            "count": 1
+          },
+          {
+            "verb": "got",
+            "count": 1
+          },
+          {
+            "verb": "trotted",
+            "count": 1
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "gave",
+            "count": 4
+          },
+          {
+            "verb": "came",
+            "count": 4
+          },
+          {
+            "verb": "suggested",
+            "count": 3
+          },
+          {
+            "verb": "left",
+            "count": 2
+          },
+          {
+            "verb": "brought",
+            "count": 2
+          },
+          {
+            "verb": "held",
+            "count": 2
+          },
+          {
+            "verb": "glanced",
+            "count": 2
+          },
+          {
+            "verb": "informed",
+            "count": 2
+          },
+          {
+            "verb": "stirred",
+            "count": 2
+          },
+          {
+            "verb": "get",
+            "count": 2
+          },
+          {
+            "verb": "laughed",
+            "count": 2
+          },
+          {
+            "verb": "frightened",
+            "count": 2
+          },
+          {
+            "verb": "gone",
+            "count": 2
+          },
+          {
+            "verb": "demanded",
+            "count": 2
+          },
+          {
+            "verb": "got",
+            "count": 2
+          },
+          {
+            "verb": "loved",
+            "count": 2
+          },
+          {
+            "verb": "talked",
+            "count": 2
+          },
+          {
+            "verb": "watched",
+            "count": 2
+          },
+          {
+            "verb": "know",
+            "count": 2
+          },
+          {
+            "verb": "took",
+            "count": 2
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "So the four years which Carol spent at Blodgett were not altogether wasted.",
+          "Most of these darn co-eds----Say, Carol, you could do a lot for people.\u201d \u201cOh--oh well--you know--sympathy and \u2026",
+          "Carol did not hear him."
+        ],
+        "passive": [],
+        "patient": [
+          "It is Carol Milford, fleeing for an hour from Blodgett College.",
+          "For all her enthusiasms, for all the fondness and the \u201ccrushes\u201d which she inspired, Carol's acquaintances were\u2026",
+          "Every man fell in love then with religion and Carol."
+        ]
+      }
+    },
+    {
+      "id": "o_pioneers",
+      "title": "O Pioneers!",
+      "author": "Willa Cather",
+      "author_gender": "female",
+      "year": 1913,
+      "period": "pre_1920",
+      "protagonist": "alexandra",
+      "counts": {
+        "agent": 190,
+        "passive": 0,
+        "patient": 214
+      },
+      "ratio": 0.47,
+      "mentions": 404,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "took",
+            "count": 8
+          },
+          {
+            "verb": "went",
+            "count": 6
+          },
+          {
+            "verb": "put",
+            "count": 5
+          },
+          {
+            "verb": "sighed",
+            "count": 4
+          },
+          {
+            "verb": "turned",
+            "count": 3
+          },
+          {
+            "verb": "watched",
+            "count": 3
+          },
+          {
+            "verb": "sat",
+            "count": 3
+          },
+          {
+            "verb": "rose",
+            "count": 3
+          },
+          {
+            "verb": "drew",
+            "count": 2
+          },
+          {
+            "verb": "shook",
+            "count": 2
+          },
+          {
+            "verb": "laughed",
+            "count": 2
+          },
+          {
+            "verb": "nodded",
+            "count": 2
+          },
+          {
+            "verb": "drove",
+            "count": 1
+          },
+          {
+            "verb": "manage",
+            "count": 1
+          },
+          {
+            "verb": "work",
+            "count": 1
+          },
+          {
+            "verb": "patted",
+            "count": 1
+          },
+          {
+            "verb": "pointed",
+            "count": 1
+          },
+          {
+            "verb": "translated",
+            "count": 1
+          },
+          {
+            "verb": "wants",
+            "count": 1
+          },
+          {
+            "verb": "resolved",
+            "count": 1
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "know",
+            "count": 4
+          },
+          {
+            "verb": "see",
+            "count": 2
+          },
+          {
+            "verb": "kill",
+            "count": 2
+          },
+          {
+            "verb": "come",
+            "count": 2
+          },
+          {
+            "verb": "went",
+            "count": 2
+          },
+          {
+            "verb": "think",
+            "count": 2
+          },
+          {
+            "verb": "turned",
+            "count": 2
+          },
+          {
+            "verb": "recover",
+            "count": 1
+          },
+          {
+            "verb": "placed",
+            "count": 1
+          },
+          {
+            "verb": "following",
+            "count": 1
+          },
+          {
+            "verb": "discussed",
+            "count": 1
+          },
+          {
+            "verb": "looking",
+            "count": 1
+          },
+          {
+            "verb": "hate",
+            "count": 1
+          },
+          {
+            "verb": "afraid",
+            "count": 1
+          },
+          {
+            "verb": "rich",
+            "count": 1
+          },
+          {
+            "verb": "evening",
+            "count": 1
+          },
+          {
+            "verb": "em",
+            "count": 1
+          },
+          {
+            "verb": "followed",
+            "count": 1
+          },
+          {
+            "verb": "addressed",
+            "count": 1
+          },
+          {
+            "verb": "knows",
+            "count": 1
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "The White Mulberry Tree I II III IV V VI VII VIII PART V. Alexandra I II III TO THE MEMORY OF SARAH ORNE JEWET\u2026",
+          "Alexandra turned away decidedly.",
+          "Alexandra explained her predicament, and the boy followed her to the corner, where Emil still sat by the pole."
+        ],
+        "passive": [],
+        "patient": [
+          "While the little drummer was drinking to recover his nerve, Alexandra hurried to the drug store as the most li\u2026",
+          "\u201cI\u2019ll have to go up after her, Alexandra.",
+          "When he came back with the spikes, Alexandra asked him what he had done with his overcoat."
+        ]
+      }
+    },
+    {
+      "id": "ethan_frome",
+      "title": "Ethan Frome",
+      "author": "Edith Wharton",
+      "author_gender": "female",
+      "year": 1911,
+      "period": "pre_1920",
+      "protagonist": "mattie",
+      "counts": {
+        "agent": 45,
+        "passive": 0,
+        "patient": 114
+      },
+      "ratio": 0.283,
+      "mentions": 159,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "came",
+            "count": 5
+          },
+          {
+            "verb": "sat",
+            "count": 2
+          },
+          {
+            "verb": "stumbled",
+            "count": 1
+          },
+          {
+            "verb": "rose",
+            "count": 1
+          },
+          {
+            "verb": "blushed",
+            "count": 1
+          },
+          {
+            "verb": "waited",
+            "count": 1
+          },
+          {
+            "verb": "sounded",
+            "count": 1
+          },
+          {
+            "verb": "drew",
+            "count": 1
+          },
+          {
+            "verb": "followed",
+            "count": 1
+          },
+          {
+            "verb": "encircled",
+            "count": 1
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "give",
+            "count": 2
+          },
+          {
+            "verb": "see",
+            "count": 2
+          },
+          {
+            "verb": "put",
+            "count": 2
+          },
+          {
+            "verb": "help",
+            "count": 2
+          },
+          {
+            "verb": "turned",
+            "count": 2
+          },
+          {
+            "verb": "flew",
+            "count": 2
+          },
+          {
+            "verb": "mingled",
+            "count": 1
+          },
+          {
+            "verb": "watching",
+            "count": 1
+          },
+          {
+            "verb": "shown",
+            "count": 1
+          },
+          {
+            "verb": "hired",
+            "count": 1
+          },
+          {
+            "verb": "riding",
+            "count": 1
+          },
+          {
+            "verb": "barked",
+            "count": 1
+          },
+          {
+            "verb": "forgotten",
+            "count": 1
+          },
+          {
+            "verb": "crossed",
+            "count": 1
+          },
+          {
+            "verb": "hear",
+            "count": 1
+          },
+          {
+            "verb": "took",
+            "count": 1
+          },
+          {
+            "verb": "exacting",
+            "count": 1
+          },
+          {
+            "verb": "entered",
+            "count": 1
+          },
+          {
+            "verb": "looking",
+            "count": 1
+          },
+          {
+            "verb": "evening",
+            "count": 1
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "Frome was in the habit of walking into Starkfield to fetch home his wife\u2019s cousin, Mattie Silver, on the rare \u2026",
+          "Mattie Silver came from Stamford, and when she entered the Fromes\u2019 household to act as her cousin Zeena\u2019s aid \u2026",
+          "Mattie Silver had lived under his roof for a year, and from early morning till they met at supper he had frequ\u2026"
+        ],
+        "passive": [],
+        "patient": [
+          "When his wife first proposed that they should give Mattie an occasional evening out he had inwardly demurred a\u2026",
+          "The fact that admiration for his learning mingled with Mattie\u2019s wonder at what he taught was not the least par\u2026",
+          "Watching Mattie whirl down the floor from hand to hand he wondered how he could ever have thought that his dul\u2026"
+        ]
+      }
+    },
+    {
+      "id": "glimpses_moon",
+      "title": "The Glimpses of the Moon",
+      "author": "Edith Wharton",
+      "author_gender": "female",
+      "year": 1922,
+      "period": "post_1920",
+      "protagonist": "susy",
+      "counts": {
+        "agent": 223,
+        "passive": 0,
+        "patient": 283
+      },
+      "ratio": 0.441,
+      "mentions": 506,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "laughed",
+            "count": 4
+          },
+          {
+            "verb": "hesitated",
+            "count": 3
+          },
+          {
+            "verb": "stood",
+            "count": 3
+          },
+          {
+            "verb": "reflected",
+            "count": 2
+          },
+          {
+            "verb": "lay",
+            "count": 2
+          },
+          {
+            "verb": "rose",
+            "count": 2
+          },
+          {
+            "verb": "sat",
+            "count": 2
+          },
+          {
+            "verb": "darling",
+            "count": 2
+          },
+          {
+            "verb": "shivered",
+            "count": 2
+          },
+          {
+            "verb": "opined",
+            "count": 1
+          },
+          {
+            "verb": "mused",
+            "count": 1
+          },
+          {
+            "verb": "knowing",
+            "count": 1
+          },
+          {
+            "verb": "thrown",
+            "count": 1
+          },
+          {
+            "verb": "sprang",
+            "count": 1
+          },
+          {
+            "verb": "confessed",
+            "count": 1
+          },
+          {
+            "verb": "threw",
+            "count": 1
+          },
+          {
+            "verb": "pleaded",
+            "count": 1
+          },
+          {
+            "verb": "moved",
+            "count": 1
+          },
+          {
+            "verb": "resisted",
+            "count": 1
+          },
+          {
+            "verb": "advancing",
+            "count": 1
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "gave",
+            "count": 3
+          },
+          {
+            "verb": "left",
+            "count": 3
+          },
+          {
+            "verb": "made",
+            "count": 2
+          },
+          {
+            "verb": "filled",
+            "count": 2
+          },
+          {
+            "verb": "bored",
+            "count": 2
+          },
+          {
+            "verb": "assured",
+            "count": 2
+          },
+          {
+            "verb": "took",
+            "count": 2
+          },
+          {
+            "verb": "rose",
+            "count": 2
+          },
+          {
+            "verb": "sent",
+            "count": 2
+          },
+          {
+            "verb": "run",
+            "count": 2
+          },
+          {
+            "verb": "drew",
+            "count": 2
+          },
+          {
+            "verb": "received",
+            "count": 2
+          },
+          {
+            "verb": "crying",
+            "count": 2
+          },
+          {
+            "verb": "think",
+            "count": 1
+          },
+          {
+            "verb": "stay",
+            "count": 1
+          },
+          {
+            "verb": "meeting",
+            "count": 1
+          },
+          {
+            "verb": "staged",
+            "count": 1
+          },
+          {
+            "verb": "recall",
+            "count": 1
+          },
+          {
+            "verb": "leaving",
+            "count": 1
+          },
+          {
+            "verb": "gnawed",
+            "count": 1
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "\u201cIt required a total lack of humour, or as great a gift for it as ours, to risk the experiment,\u201d Susy Lansing \u2026",
+          "When Susy spoke it was in a voice languid with visions.",
+          "\u201cPeople with a balance can\u2019t be as happy as all this,\u201d Susy mused, letting the moonlight filter through her la\u2026"
+        ],
+        "passive": [],
+        "patient": [
+          "\u201cIt\u2019s a little late in the year for them: they\u2019re ending just as we begin.\u201d Susy laughed.",
+          "\u201cI hope when our turn comes we shall say good-bye to each other as sweetly.\u201d It was in her husband\u2019s mind to a\u2026",
+          "People with a balance had always been Susy Branch\u2019s bugbear; they were still, and more dangerously, to be Susy\u2026"
+        ]
+      }
+    },
+    {
+      "id": "a_lost_lady",
+      "title": "A Lost Lady",
+      "author": "Willa Cather",
+      "author_gender": "female",
+      "year": 1923,
+      "period": "post_1920",
+      "protagonist": "forrester",
+      "counts": {
+        "agent": 139,
+        "passive": 0,
+        "patient": 139
+      },
+      "ratio": 0.5,
+      "mentions": 278,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "came",
+            "count": 8
+          },
+          {
+            "verb": "sat",
+            "count": 5
+          },
+          {
+            "verb": "stood",
+            "count": 3
+          },
+          {
+            "verb": "glanced",
+            "count": 2
+          },
+          {
+            "verb": "nodded",
+            "count": 2
+          },
+          {
+            "verb": "took",
+            "count": 2
+          },
+          {
+            "verb": "went",
+            "count": 2
+          },
+          {
+            "verb": "shook",
+            "count": 2
+          },
+          {
+            "verb": "chose",
+            "count": 1
+          },
+          {
+            "verb": "hates",
+            "count": 1
+          },
+          {
+            "verb": "watched",
+            "count": 1
+          },
+          {
+            "verb": "come",
+            "count": 1
+          },
+          {
+            "verb": "led",
+            "count": 1
+          },
+          {
+            "verb": "ran",
+            "count": 1
+          },
+          {
+            "verb": "brought",
+            "count": 1
+          },
+          {
+            "verb": "dropped",
+            "count": 1
+          },
+          {
+            "verb": "chatted",
+            "count": 1
+          },
+          {
+            "verb": "left",
+            "count": 1
+          },
+          {
+            "verb": "thinks",
+            "count": 1
+          },
+          {
+            "verb": "met",
+            "count": 1
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "see",
+            "count": 4
+          },
+          {
+            "verb": "know",
+            "count": 3
+          },
+          {
+            "verb": "dining",
+            "count": 2
+          },
+          {
+            "verb": "go",
+            "count": 2
+          },
+          {
+            "verb": "devoted",
+            "count": 2
+          },
+          {
+            "verb": "seen",
+            "count": 2
+          },
+          {
+            "verb": "went",
+            "count": 2
+          },
+          {
+            "verb": "approach",
+            "count": 1
+          },
+          {
+            "verb": "shadows",
+            "count": 1
+          },
+          {
+            "verb": "robes",
+            "count": 1
+          },
+          {
+            "verb": "distinguished",
+            "count": 1
+          },
+          {
+            "verb": "left",
+            "count": 1
+          },
+          {
+            "verb": "served",
+            "count": 1
+          },
+          {
+            "verb": "remarked",
+            "count": 1
+          },
+          {
+            "verb": "staying",
+            "count": 1
+          },
+          {
+            "verb": "opened",
+            "count": 1
+          },
+          {
+            "verb": "think",
+            "count": 1
+          },
+          {
+            "verb": "call",
+            "count": 1
+          },
+          {
+            "verb": "sitting",
+            "count": 1
+          },
+          {
+            "verb": "explain",
+            "count": 1
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "Captain Forrester was himself a railroad man, a contractor, who had built hundreds of miles of road for the Bu\u2026",
+          "The Forrester place, as every one called it, was not at all remarkable; the people who lived there made it see\u2026",
+          "Any one but Captain Forrester would have drained the bottom land and made it into highly productive fields."
+        ],
+        "passive": [],
+        "patient": [
+          "When the Burlington men were travelling back and forth on business not very urgent, they found it agreeable to\u2026",
+          "To approach Captain Forrester's property, you had first to get over a wide, sandy creek which flowed along the\u2026",
+          "And when they reached the top of the hill, it gratified him to see men who were older than himself leap nimbly\u2026"
+        ]
+      }
+    },
+    {
+      "id": "barren_ground",
+      "title": "Barren Ground",
+      "author": "Ellen Glasgow",
+      "author_gender": "female",
+      "year": 1925,
+      "period": "post_1920",
+      "protagonist": "dorinda",
+      "counts": {
+        "agent": 269,
+        "passive": 0,
+        "patient": 373
+      },
+      "ratio": 0.419,
+      "mentions": 642,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "laughed",
+            "count": 9
+          },
+          {
+            "verb": "smiled",
+            "count": 9
+          },
+          {
+            "verb": "sighed",
+            "count": 6
+          },
+          {
+            "verb": "shook",
+            "count": 5
+          },
+          {
+            "verb": "went",
+            "count": 5
+          },
+          {
+            "verb": "remarked",
+            "count": 4
+          },
+          {
+            "verb": "nodded",
+            "count": 4
+          },
+          {
+            "verb": "inquired",
+            "count": 4
+          },
+          {
+            "verb": "turned",
+            "count": 4
+          },
+          {
+            "verb": "rejoined",
+            "count": 4
+          },
+          {
+            "verb": "watched",
+            "count": 3
+          },
+          {
+            "verb": "followed",
+            "count": 3
+          },
+          {
+            "verb": "gazed",
+            "count": 3
+          },
+          {
+            "verb": "pleaded",
+            "count": 2
+          },
+          {
+            "verb": "took",
+            "count": 2
+          },
+          {
+            "verb": "broke",
+            "count": 2
+          },
+          {
+            "verb": "assented",
+            "count": 2
+          },
+          {
+            "verb": "wavered",
+            "count": 2
+          },
+          {
+            "verb": "bent",
+            "count": 2
+          },
+          {
+            "verb": "picked",
+            "count": 2
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "reminded",
+            "count": 7
+          },
+          {
+            "verb": "passed",
+            "count": 6
+          },
+          {
+            "verb": "know",
+            "count": 5
+          },
+          {
+            "verb": "gone",
+            "count": 3
+          },
+          {
+            "verb": "followed",
+            "count": 3
+          },
+          {
+            "verb": "got",
+            "count": 3
+          },
+          {
+            "verb": "came",
+            "count": 3
+          },
+          {
+            "verb": "made",
+            "count": 2
+          },
+          {
+            "verb": "watched",
+            "count": 2
+          },
+          {
+            "verb": "remarked",
+            "count": 2
+          },
+          {
+            "verb": "going",
+            "count": 2
+          },
+          {
+            "verb": "pervaded",
+            "count": 2
+          },
+          {
+            "verb": "feel",
+            "count": 2
+          },
+          {
+            "verb": "care",
+            "count": 2
+          },
+          {
+            "verb": "look",
+            "count": 2
+          },
+          {
+            "verb": "sat",
+            "count": 2
+          },
+          {
+            "verb": "worry",
+            "count": 2
+          },
+          {
+            "verb": "inquired",
+            "count": 2
+          },
+          {
+            "verb": "eat",
+            "count": 2
+          },
+          {
+            "verb": "snowing",
+            "count": 1
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "To Dorinda, meeting him in the early morning as she was walking the two miles from Old Farm to the store, it w\u2026",
+          "\"You'd better be startin' home, Dorinda,\" he remarked as he passed her.",
+          "Dorinda's head was turned away, but her voice sounded smothered."
+        ],
+        "passive": [],
+        "patient": [
+          "Two of these were sons, Josiah and Rufus; the other was a daughter, Dorinda, the girl who, having thrown the o\u2026",
+          "There were hours at twilight, or beneath the shredded clouds of the sunrise, when the winter landscape reminde\u2026",
+          "For almost a year now, ever since Mrs. Pedlar had fallen ill of consumption, and Dorinda had taken her place i\u2026"
+        ]
+      }
+    },
+    {
+      "id": "alice_adams",
+      "title": "Alice Adams",
+      "author": "Booth Tarkington",
+      "author_gender": "male",
+      "year": 1921,
+      "period": "post_1920",
+      "protagonist": "alice",
+      "counts": {
+        "agent": 248,
+        "passive": 0,
+        "patient": 282
+      },
+      "ratio": 0.468,
+      "mentions": 530,
+      "top_verbs": {
+        "agent": [
+          {
+            "verb": "laughed",
+            "count": 14
+          },
+          {
+            "verb": "interrupted",
+            "count": 5
+          },
+          {
+            "verb": "went",
+            "count": 4
+          },
+          {
+            "verb": "shook",
+            "count": 3
+          },
+          {
+            "verb": "gave",
+            "count": 3
+          },
+          {
+            "verb": "ran",
+            "count": 2
+          },
+          {
+            "verb": "smiling",
+            "count": 2
+          },
+          {
+            "verb": "took",
+            "count": 2
+          },
+          {
+            "verb": "kept",
+            "count": 2
+          },
+          {
+            "verb": "finished",
+            "count": 2
+          },
+          {
+            "verb": "begged",
+            "count": 2
+          },
+          {
+            "verb": "patted",
+            "count": 2
+          },
+          {
+            "verb": "persisted",
+            "count": 1
+          },
+          {
+            "verb": "progressing",
+            "count": 1
+          },
+          {
+            "verb": "jumped",
+            "count": 1
+          },
+          {
+            "verb": "looking",
+            "count": 1
+          },
+          {
+            "verb": "swung",
+            "count": 1
+          },
+          {
+            "verb": "listened",
+            "count": 1
+          },
+          {
+            "verb": "pausing",
+            "count": 1
+          },
+          {
+            "verb": "remember",
+            "count": 1
+          }
+        ],
+        "passive": [],
+        "patient": [
+          {
+            "verb": "came",
+            "count": 6
+          },
+          {
+            "verb": "get",
+            "count": 4
+          },
+          {
+            "verb": "see",
+            "count": 4
+          },
+          {
+            "verb": "show",
+            "count": 2
+          },
+          {
+            "verb": "mean",
+            "count": 2
+          },
+          {
+            "verb": "know",
+            "count": 2
+          },
+          {
+            "verb": "offered",
+            "count": 2
+          },
+          {
+            "verb": "come",
+            "count": 2
+          },
+          {
+            "verb": "go",
+            "count": 2
+          },
+          {
+            "verb": "include",
+            "count": 1
+          },
+          {
+            "verb": "insisting",
+            "count": 1
+          },
+          {
+            "verb": "hurt",
+            "count": 1
+          },
+          {
+            "verb": "understand",
+            "count": 1
+          },
+          {
+            "verb": "listened",
+            "count": 1
+          },
+          {
+            "verb": "remained",
+            "count": 1
+          },
+          {
+            "verb": "belonged",
+            "count": 1
+          },
+          {
+            "verb": "painted",
+            "count": 1
+          },
+          {
+            "verb": "shown",
+            "count": 1
+          },
+          {
+            "verb": "married",
+            "count": 1
+          },
+          {
+            "verb": "contracting",
+            "count": 1
+          }
+        ]
+      },
+      "examples": {
+        "agent": [
+          "EBOOK ALICE ADAMS *** Produced by Charles Keller ALICE ADAMS By Booth Tarkington CHAPTER I The patient, an old\u2026",
+          "That is, just before the moment of her mother's entrance, Alice had been playing with the mirror's reflections\u2026",
+          "Alice frequently thought it necessary to instruct her mother."
+        ],
+        "passive": [],
+        "patient": [
+          "\u201cThe best things she's got!\u201d a cold-blooded girl friend said of them, and meant to include Alice's mind and ch\u2026",
+          "He said that \u201cthe way she used her cute hazel eyes and the wonderful glow of her facial expression gave her a \u2026",
+          "Her mother comforted her too heartily, insisting that Alice had \u201cplenty enough spiritual qualities,\u201d certainly\u2026"
+        ]
+      }
+    }
+  ],
+  "period_summary": {
+    "pre_1920": {
+      "avg_ratio": 0.427,
+      "books": 7,
+      "male_avg": 0.346,
+      "female_avg": 0.441
+    },
+    "at_1920": {
+      "avg_ratio": 0.336,
+      "books": 2,
+      "male_avg": 0.461,
+      "female_avg": 0.211
+    },
+    "post_1920": {
+      "avg_ratio": 0.457,
+      "books": 4,
+      "male_avg": 0.468,
+      "female_avg": 0.453
+    }
+  }
+}

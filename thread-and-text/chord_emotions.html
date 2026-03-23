@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Emotion Arcs — Alice in Wonderland</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-chord@3"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      background: #0d0a12;
+      color: #e8e0f0;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      grid-template-rows: auto auto 1fr;
+      min-height: 100vh;
+    }
+
+    header {
+      grid-column: 1 / -1;
+      padding: 18px 32px 12px;
+      border-bottom: 1px solid #1e1830;
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+    }
+    header h1 { font-size: 1.15rem; color: #c89fff; letter-spacing: 0.08em; }
+    header .sub { font-size: 11px; color: #4a3a60; }
+
+    /* ── Heatmap strip ── */
+    #heatmap-wrap {
+      grid-column: 1 / -1;
+      padding: 20px 32px 12px;
+      border-bottom: 1px solid #1e1830;
+    }
+    #heatmap-wrap h2 {
+      font-size: 10px;
+      color: #4a3a60;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    #heatmap-svg { display: block; width: 100%; }
+
+    /* ── Chord ── */
+    #chord-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 24px 24px 32px;
+    }
+    #chord-svg { display: block; }
+
+    .group-arc   { cursor: pointer; stroke: #0d0a12; stroke-width: 1.5px; }
+    .ribbon      { cursor: pointer; transition: fill-opacity 0.15s; }
+    .ribbon:hover { stroke: #fff; stroke-width: 0.8px; fill-opacity: 0.92 !important; }
+    .ribbon.dimmed { fill-opacity: 0.05 !important; }
+    .group-label { pointer-events: none; font-size: 12px; letter-spacing: 0.04em; }
+
+    /* ── Sidebar ── */
+    #sidebar {
+      border-left: 1px solid #1e1830;
+      padding: 20px 18px;
+      overflow-y: auto;
+    }
+    #sidebar h2 {
+      font-size: 10px; color: #4a3a60;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .pair-card {
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #160f22;
+    }
+    .pair-card .meta {
+      font-size: 11px;
+      color: #8870a8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 5px;
+    }
+    .pair-card .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      display: inline-block; flex-shrink: 0;
+    }
+    .pair-card .examples {
+      font-size: 10px;
+      color: #4a3a60;
+      font-style: italic;
+      line-height: 1.6;
+    }
+    .strength-bar {
+      height: 3px;
+      border-radius: 2px;
+      margin-top: 6px;
+      opacity: 0.7;
+    }
+
+    /* ── Tooltip ── */
+    #tooltip {
+      position: fixed;
+      padding: 10px 14px;
+      background: rgba(10, 6, 18, 0.97);
+      border: 1px solid #3a2a60;
+      border-radius: 6px;
+      font-size: 12px;
+      max-width: 280px;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 99;
+      line-height: 1.7;
+    }
+    #tooltip .tp-pair { color: #c89fff; font-weight: bold; margin-bottom: 4px; }
+    #tooltip .tp-words { color: #6a5080; font-size: 10px; font-style: italic; }
+
+    #no-data {
+      grid-column: 1/-1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 60px; color: #4a3a60; font-size: 14px; line-height: 2;
+    }
+    #no-data code { background: #160f22; padding: 2px 6px; border-radius: 3px; color: #aaa; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Emotion Arcs — Alice in Wonderland</h1>
+    <span class="sub" id="hdr-sub">Loading…</span>
+  </header>
+
+  <div id="heatmap-wrap">
+    <h2>Emotion intensity by chapter</h2>
+    <svg id="heatmap-svg"></svg>
+  </div>
+
+  <div id="chord-wrap">
+    <svg id="chord-svg" width="560" height="560"></svg>
+  </div>
+
+  <div id="sidebar">
+    <h2>Strongest pairings</h2>
+    <div id="pair-list"></div>
+  </div>
+
+  <div id="tooltip"></div>
+
+  <script>
+    const tooltip     = document.getElementById("tooltip");
+    const hideTooltip = () => { tooltip.style.opacity = 0; };
+
+    // ── Emotion colours ──────────────────────────────────────────────────────
+    const EMO_COLOR = {
+      joy:          "#f9d84a",
+      trust:        "#5ecf7a",
+      anticipation: "#f0922b",
+      surprise:     "#a0e0ff",
+      fear:         "#9966cc",
+      sadness:      "#5588dd",
+      disgust:      "#88aa44",
+      anger:        "#e05050",
+    };
+
+    // ── Draw heatmap ─────────────────────────────────────────────────────────
+    function drawHeatmap(data) {
+      const emotions  = data.emotions;
+      const chapters  = data.chapters;
+      const nE = emotions.length, nC = chapters.length;
+
+      const svg    = d3.select("#heatmap-svg");
+      const W      = document.getElementById("heatmap-wrap").clientWidth - 64;
+      const cellW  = Math.floor((W - 110) / nC);
+      const cellH  = 22;
+      const H      = nE * cellH + 30;
+
+      svg.attr("viewBox", [0, 0, W, H]).attr("height", H);
+
+      // Max per emotion for colour scale
+      const maxByEmo = {};
+      emotions.forEach(e => {
+        maxByEmo[e] = d3.max(chapters, c => c.counts[e] || 0) || 1;
+      });
+
+      const g = svg.append("g").attr("transform", "translate(110,0)");
+
+      // Chapter labels
+      g.append("g").selectAll("text")
+        .data(chapters).join("text")
+        .attr("x", (_, i) => i * cellW + cellW / 2)
+        .attr("y", H - 6)
+        .attr("text-anchor", "middle")
+        .attr("font-size", 9)
+        .attr("fill", "#4a3a60")
+        .text(d => `Ch.${d.chapter}`);
+
+      // Emotion rows
+      emotions.forEach((emo, ei) => {
+        const row = g.append("g").attr("transform", `translate(0,${ei * cellH})`);
+        const baseColor = EMO_COLOR[emo] || "#888";
+        const scale = d3.scaleLinear()
+          .domain([0, maxByEmo[emo]])
+          .range(["#111020", baseColor]);
+
+        // Cells
+        row.selectAll("rect")
+          .data(chapters).join("rect")
+          .attr("x", (_, i) => i * cellW + 1)
+          .attr("y", 2)
+          .attr("width",  cellW - 2)
+          .attr("height", cellH - 4)
+          .attr("rx", 2)
+          .attr("fill", d => scale(d.counts[emo] || 0))
+          .on("mouseover", (e, d) => {
+            const ex = (d.examples[emo] || []).join(", ");
+            tooltip.innerHTML =
+              `<div class="tp-pair" style="color:${baseColor}">${emo}</div>` +
+              `<strong style="color:#e8e0f0">${d.heading} — ${d.subtitle}</strong><br>` +
+              `<span style="color:#6a5080">count: ${d.counts[emo]}</span><br>` +
+              (ex ? `<span class="tp-words">trigger words: ${ex}</span>` : "");
+            tooltip.style.opacity = 1;
+            tooltip.style.left = (e.pageX + 14) + "px";
+            tooltip.style.top  = (e.pageY + 8)  + "px";
+          })
+          .on("mouseout", hideTooltip);
+      });
+
+      // Emotion row labels
+      svg.append("g").selectAll("text")
+        .data(emotions).join("text")
+        .attr("x", 105)
+        .attr("y", (_, i) => i * cellH + cellH / 2 + 4)
+        .attr("text-anchor", "end")
+        .attr("font-size", 10)
+        .attr("fill", e => EMO_COLOR[e] || "#888")
+        .text(e => e);
+    }
+
+    // ── Draw chord ───────────────────────────────────────────────────────────
+    function drawChord(data) {
+      const emotions = data.emotions;
+      const n        = emotions.length;
+      const emoIdx   = {};
+      emotions.forEach((e, i) => { emoIdx[e] = i; });
+
+      // Matrix weighted by co-occurrence strength
+      const matrix = Array.from({ length: n }, () => new Array(n).fill(0));
+      data.pairs.forEach(p => {
+        const i = emoIdx[p.source], j = emoIdx[p.target];
+        if (i != null && j != null) {
+          matrix[i][j] += p.weight;
+          matrix[j][i] += p.weight;
+        }
+      });
+
+      const lookup = {};
+      data.pairs.forEach(p => {
+        const i = emoIdx[p.source], j = emoIdx[p.target];
+        if (i == null || j == null) return;
+        lookup[`${i}-${j}`] = p;
+        lookup[`${j}-${i}`] = p;
+      });
+
+      const W = 560, H = 560;
+      const outerR = Math.min(W, H) / 2 - 62;
+      const innerR = outerR - 20;
+
+      const chordFn = d3.chord()
+        .padAngle(0.06)
+        .sortSubgroups(d3.descending)
+        .sortChords(d3.descending);
+      const chords  = chordFn(matrix);
+      const groups  = chords.groups || [];
+      const ribbons = chords.filter(d => d.source.value > 0 || d.target.value > 0);
+
+      const arc    = d3.arc().innerRadius(innerR).outerRadius(outerR);
+      const ribbon = d3.ribbon().radius(innerR - 2);
+
+      const svg = d3.select("#chord-svg")
+        .attr("viewBox", [0, 0, W, H]).html("");
+      const g = svg.append("g").attr("transform", `translate(${W/2},${H/2})`);
+
+      // Ribbons
+      const ribbonPaths = g.append("g").selectAll("path")
+        .data(ribbons).join("path")
+        .attr("class", "ribbon")
+        .attr("d", ribbon)
+        .attr("fill", d => EMO_COLOR[emotions[d.source.index]] || "#888")
+        .attr("fill-opacity", 0.45)
+        .on("mouseover", (e, d) => {
+          const si = d.source.index, ti = d.target.index;
+          const p  = lookup[`${si}-${ti}`];
+          if (!p) return;
+          const aEx = (data.chapters[0].examples[emotions[si]] || []).slice(0, 3).join(", ");
+          const bEx = (data.chapters[0].examples[emotions[ti]] || []).slice(0, 3).join(", ");
+          tooltip.innerHTML =
+            `<div class="tp-pair">` +
+            `<span style="color:${EMO_COLOR[emotions[si]]}">${emotions[si]}</span>` +
+            ` + <span style="color:${EMO_COLOR[emotions[ti]]}">${emotions[ti]}</span></div>` +
+            `co-occur in <strong>${p.count}</strong> of 11 chapters<br>` +
+            `<span class="tp-words">shared weight: ${p.weight.toFixed(3)}</span>`;
+          tooltip.style.opacity = 1;
+          tooltip.style.left = (e.pageX + 14) + "px";
+          tooltip.style.top  = (e.pageY + 8)  + "px";
+          ribbonPaths.classed("dimmed", r => r !== d);
+        })
+        .on("mouseout", () => { hideTooltip(); ribbonPaths.classed("dimmed", false); });
+
+      // Arcs
+      g.append("g").selectAll("path")
+        .data(groups).join("path")
+        .attr("class", "group-arc")
+        .attr("d", arc)
+        .attr("fill", d => EMO_COLOR[emotions[d.index]] || "#888")
+        .attr("fill-opacity", 0.9)
+        .on("mouseover", (e, d) => {
+          const emo = emotions[d.index];
+          const topChap = [...data.chapters]
+            .sort((a, b) => (b.counts[emo] || 0) - (a.counts[emo] || 0))[0];
+          tooltip.innerHTML =
+            `<strong style="color:${EMO_COLOR[emo]}">${emo}</strong><br>` +
+            `peaks in: <em>${topChap.heading}</em><br>` +
+            `<span class="tp-words">words: ${(topChap.examples[emo] || []).join(", ")}</span>`;
+          tooltip.style.opacity = 1;
+          tooltip.style.left = (e.pageX + 14) + "px";
+          tooltip.style.top  = (e.pageY + 8)  + "px";
+          ribbonPaths.classed("dimmed", r =>
+            r.source.index !== d.index && r.target.index !== d.index);
+        })
+        .on("mouseout", () => { hideTooltip(); ribbonPaths.classed("dimmed", false); });
+
+      // Labels
+      g.append("g").selectAll("text")
+        .data(groups).join("text")
+        .attr("class", "group-label")
+        .attr("transform", d => {
+          const a = (d.startAngle + d.endAngle) / 2 - Math.PI / 2;
+          return `translate(${Math.cos(a) * (outerR + 22)},${Math.sin(a) * (outerR + 22)})`;
+        })
+        .attr("text-anchor", d => {
+          const a = (d.startAngle + d.endAngle) / 2 - Math.PI / 2;
+          if (Math.abs(Math.cos(a)) < 0.15) return "middle";
+          return Math.cos(a) > 0 ? "start" : "end";
+        })
+        .attr("dy", "0.35em")
+        .attr("fill", d => EMO_COLOR[emotions[d.index]] || "#888")
+        .text(d => emotions[d.index]);
+
+      // ── Sidebar ────────────────────────────────────────────────────────────
+      const listEl = document.getElementById("pair-list");
+      listEl.innerHTML = "";
+      const maxW   = data.pairs[0]?.weight || 1;
+
+      data.pairs.slice(0, 20).forEach(p => {
+        const cA = EMO_COLOR[p.source] || "#888";
+        const cB = EMO_COLOR[p.target] || "#888";
+        const pct = (p.weight / maxW * 100).toFixed(0);
+        const div = document.createElement("div");
+        div.className = "pair-card";
+
+        // Collect example words across chapters for both emotions
+        const exA = [...new Set(data.chapters.flatMap(c => c.examples[p.source] || []))].slice(0, 3);
+        const exB = [...new Set(data.chapters.flatMap(c => c.examples[p.target] || []))].slice(0, 3);
+
+        div.innerHTML = `
+          <div class="meta">
+            <span class="dot" style="background:${cA}"></span>
+            <strong style="color:${cA}">${p.source}</strong>
+            <span style="color:#3a2a50">+</span>
+            <span class="dot" style="background:${cB}"></span>
+            <strong style="color:${cB}">${p.target}</strong>
+            <span style="color:#4a3a60;font-size:9px">${p.count}/11 ch.</span>
+          </div>
+          <div class="examples">${exA.join(", ")} · ${exB.join(", ")}</div>
+          <div class="strength-bar" style="width:${pct}%;background:linear-gradient(90deg,${cA},${cB})"></div>`;
+        listEl.appendChild(div);
+      });
+    }
+
+    // ── Load ──────────────────────────────────────────────────────────────────
+    d3.json("emotions.json")
+      .then(data => {
+        document.getElementById("hdr-sub").textContent =
+          `${data.text}  ·  ${data.emotions.length} emotions  ·  ${data.chapters.length} chapters`;
+        drawHeatmap(data);
+        drawChord(data);
+      })
+      .catch(() => {
+        document.body.innerHTML = `
+          <div id="no-data">
+            <p><strong style="color:#c66">emotions.json not found.</strong></p>
+            <p>Run the extractor first:</p>
+            <p><code>python extract_emotions.py</code></p>
+            <p>Then refresh (served via <code>python -m http.server 8765</code>).</p>
+          </div>`;
+      });
+  </script>
+</body>
+</html>

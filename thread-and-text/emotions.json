@@ -1,0 +1,1010 @@
+{
+  "text": "carroll-alice.txt",
+  "emotions": [
+    "joy",
+    "trust",
+    "anticipation",
+    "surprise",
+    "fear",
+    "sadness",
+    "disgust",
+    "anger"
+  ],
+  "chapters": [
+    {
+      "chapter": 1,
+      "heading": "CHAPTER I.",
+      "subtitle": "Down the Rabbit-Hole",
+      "counts": {
+        "joy": 29,
+        "trust": 33,
+        "anticipation": 49,
+        "surprise": 20,
+        "fear": 13,
+        "sadness": 32,
+        "disgust": 10,
+        "anger": 17
+      },
+      "examples": {
+        "joy": [
+          "white",
+          "remarkable",
+          "found",
+          "true"
+        ],
+        "trust": [
+          "bank",
+          "white",
+          "remarkable",
+          "found"
+        ],
+        "anticipation": [
+          "thought",
+          "white",
+          "time",
+          "watch"
+        ],
+        "surprise": [
+          "suddenly",
+          "remarkable",
+          "curiosity",
+          "pop"
+        ],
+        "fear": [
+          "watch",
+          "fear",
+          "killing",
+          "afraid"
+        ],
+        "sadness": [
+          "late",
+          "falling",
+          "fell",
+          "dark"
+        ],
+        "disgust": [
+          "disappointment",
+          "ignorant",
+          "hanging",
+          "larger"
+        ],
+        "anger": [
+          "hot",
+          "fear",
+          "killing",
+          "words"
+        ]
+      },
+      "norm": {
+        "joy": 0.1429,
+        "trust": 0.1626,
+        "anticipation": 0.2414,
+        "surprise": 0.0985,
+        "fear": 0.064,
+        "sadness": 0.1576,
+        "disgust": 0.0493,
+        "anger": 0.0837
+      }
+    },
+    {
+      "chapter": 2,
+      "heading": "CHAPTER II.",
+      "subtitle": "The Pool of Tears",
+      "counts": {
+        "joy": 26,
+        "trust": 32,
+        "anticipation": 44,
+        "surprise": 16,
+        "fear": 30,
+        "sadness": 23,
+        "disgust": 12,
+        "anger": 22
+      },
+      "examples": {
+        "joy": [
+          "good",
+          "deal",
+          "kind",
+          "love"
+        ],
+        "trust": [
+          "good",
+          "deal",
+          "manage",
+          "kind"
+        ],
+        "anticipation": [
+          "good",
+          "deal",
+          "thought",
+          "planning"
+        ],
+        "surprise": [
+          "surprised",
+          "good",
+          "deal",
+          "feeling"
+        ],
+        "fear": [
+          "hopeless",
+          "savage",
+          "timid",
+          "violently"
+        ],
+        "sadness": [
+          "hopeless",
+          "cry",
+          "ashamed",
+          "crying"
+        ],
+        "disgust": [
+          "lying",
+          "ashamed",
+          "violently",
+          "feeling"
+        ],
+        "anger": [
+          "lying",
+          "savage",
+          "violently",
+          "darkness"
+        ]
+      },
+      "norm": {
+        "joy": 0.1268,
+        "trust": 0.1561,
+        "anticipation": 0.2146,
+        "surprise": 0.078,
+        "fear": 0.1463,
+        "sadness": 0.1122,
+        "disgust": 0.0585,
+        "anger": 0.1073
+      }
+    },
+    {
+      "chapter": 3,
+      "heading": "CHAPTER III.",
+      "subtitle": "A Caucus-Race and a Long Tale",
+      "counts": {
+        "joy": 10,
+        "trust": 19,
+        "anticipation": 27,
+        "surprise": 11,
+        "fear": 19,
+        "sadness": 29,
+        "disgust": 10,
+        "anger": 21
+      },
+      "examples": {
+        "joy": [
+          "found",
+          "rising",
+          "smile",
+          "deal"
+        ],
+        "trust": [
+          "bank",
+          "authority",
+          "fixed",
+          "important"
+        ],
+        "anticipation": [
+          "long",
+          "ready",
+          "shiver",
+          "thought"
+        ],
+        "surprise": [
+          "catch",
+          "worm",
+          "smile",
+          "suddenly"
+        ],
+        "fear": [
+          "cross",
+          "bad",
+          "conquest",
+          "shiver"
+        ],
+        "sadness": [
+          "cross",
+          "older",
+          "refused",
+          "bad"
+        ],
+        "disgust": [
+          "bad",
+          "frowning",
+          "despair",
+          "hate"
+        ],
+        "anger": [
+          "cross",
+          "argument",
+          "bad",
+          "conquest"
+        ]
+      },
+      "norm": {
+        "joy": 0.0685,
+        "trust": 0.1301,
+        "anticipation": 0.1849,
+        "surprise": 0.0753,
+        "fear": 0.1301,
+        "sadness": 0.1986,
+        "disgust": 0.0685,
+        "anger": 0.1438
+      }
+    },
+    {
+      "chapter": 4,
+      "heading": "CHAPTER IV.",
+      "subtitle": "The Rabbit Sends in a Little Bill",
+      "counts": {
+        "joy": 34,
+        "trust": 50,
+        "anticipation": 73,
+        "surprise": 28,
+        "fear": 31,
+        "sadness": 30,
+        "disgust": 10,
+        "anger": 28
+      },
+      "examples": {
+        "joy": [
+          "white",
+          "swim",
+          "found",
+          "hope"
+        ],
+        "trust": [
+          "white",
+          "explain",
+          "real",
+          "found"
+        ],
+        "anticipation": [
+          "white",
+          "hunting",
+          "swim",
+          "hurried"
+        ],
+        "surprise": [
+          "vanished",
+          "frightened",
+          "surprised",
+          "leave"
+        ],
+        "fear": [
+          "hunting",
+          "swim",
+          "vanished",
+          "frightened"
+        ],
+        "sadness": [
+          "lost",
+          "vanished",
+          "mistake",
+          "leave"
+        ],
+        "disgust": [
+          "angry",
+          "lying",
+          "larger",
+          "unhappy"
+        ],
+        "anger": [
+          "hunting",
+          "angry",
+          "fear",
+          "words"
+        ]
+      },
+      "norm": {
+        "joy": 0.1197,
+        "trust": 0.1761,
+        "anticipation": 0.257,
+        "surprise": 0.0986,
+        "fear": 0.1092,
+        "sadness": 0.1056,
+        "disgust": 0.0352,
+        "anger": 0.0986
+      }
+    },
+    {
+      "chapter": 5,
+      "heading": "CHAPTER V.",
+      "subtitle": "Advice from a Caterpillar",
+      "counts": {
+        "joy": 38,
+        "trust": 48,
+        "anticipation": 42,
+        "surprise": 35,
+        "fear": 41,
+        "sadness": 16,
+        "disgust": 18,
+        "anger": 21
+      },
+      "examples": {
+        "joy": [
+          "present",
+          "found",
+          "good",
+          "young"
+        ],
+        "trust": [
+          "advice",
+          "sir",
+          "present",
+          "explain"
+        ],
+        "anticipation": [
+          "time",
+          "present",
+          "good",
+          "thought"
+        ],
+        "surprise": [
+          "mouth",
+          "present",
+          "good",
+          "young"
+        ],
+        "fear": [
+          "afraid",
+          "hearing",
+          "bee",
+          "youth"
+        ],
+        "sadness": [
+          "unpleasant",
+          "melancholy",
+          "injure",
+          "fat"
+        ],
+        "disgust": [
+          "unpleasant",
+          "fat",
+          "nose",
+          "airs"
+        ],
+        "anger": [
+          "anger",
+          "bee",
+          "youth",
+          "injure"
+        ]
+      },
+      "norm": {
+        "joy": 0.1467,
+        "trust": 0.1853,
+        "anticipation": 0.1622,
+        "surprise": 0.1351,
+        "fear": 0.1583,
+        "sadness": 0.0618,
+        "disgust": 0.0695,
+        "anger": 0.0811
+      }
+    },
+    {
+      "chapter": 6,
+      "heading": "CHAPTER VI.",
+      "subtitle": "Pig and Pepper",
+      "counts": {
+        "joy": 38,
+        "trust": 26,
+        "anticipation": 51,
+        "surprise": 30,
+        "fear": 51,
+        "sadness": 39,
+        "disgust": 46,
+        "anger": 42
+      },
+      "examples": {
+        "joy": [
+          "good",
+          "baby",
+          "grin",
+          "feeling"
+        ],
+        "trust": [
+          "ground",
+          "constant",
+          "top",
+          "doubt"
+        ],
+        "anticipation": [
+          "letter",
+          "invitation",
+          "time",
+          "thought"
+        ],
+        "surprise": [
+          "suddenly",
+          "crash",
+          "good",
+          "sneeze"
+        ],
+        "fear": [
+          "entangled",
+          "fear",
+          "hearing",
+          "crash"
+        ],
+        "sadness": [
+          "entangled",
+          "crash",
+          "broken",
+          "broke"
+        ],
+        "disgust": [
+          "pig",
+          "entangled",
+          "nose",
+          "dreadful"
+        ],
+        "anger": [
+          "words",
+          "entangled",
+          "fear",
+          "broken"
+        ]
+      },
+      "norm": {
+        "joy": 0.1176,
+        "trust": 0.0805,
+        "anticipation": 0.1579,
+        "surprise": 0.0929,
+        "fear": 0.1579,
+        "sadness": 0.1207,
+        "disgust": 0.1424,
+        "anger": 0.13
+      }
+    },
+    {
+      "chapter": 7,
+      "heading": "CHAPTER VII.",
+      "subtitle": "A Mad Tea-Party",
+      "counts": {
+        "joy": 25,
+        "trust": 20,
+        "anticipation": 56,
+        "surprise": 15,
+        "fear": 25,
+        "sadness": 25,
+        "disgust": 11,
+        "anger": 16
+      },
+      "examples": {
+        "joy": [
+          "tree",
+          "fun",
+          "glad",
+          "music"
+        ],
+        "trust": [
+          "tree",
+          "personal",
+          "shoulder",
+          "dare"
+        ],
+        "anticipation": [
+          "tree",
+          "thought",
+          "coming",
+          "time"
+        ],
+        "surprise": [
+          "tree",
+          "curiosity",
+          "guess",
+          "break"
+        ],
+        "fear": [
+          "mad",
+          "cutting",
+          "hearing",
+          "watch"
+        ],
+        "sadness": [
+          "mad",
+          "cutting",
+          "case",
+          "dreadfully"
+        ],
+        "disgust": [
+          "mad",
+          "tree",
+          "cutting",
+          "dreadfully"
+        ],
+        "anger": [
+          "mad",
+          "tree",
+          "cutting",
+          "hot"
+        ]
+      },
+      "norm": {
+        "joy": 0.1295,
+        "trust": 0.1036,
+        "anticipation": 0.2902,
+        "surprise": 0.0777,
+        "fear": 0.1295,
+        "sadness": 0.1295,
+        "disgust": 0.057,
+        "anger": 0.0829
+      }
+    },
+    {
+      "chapter": 8,
+      "heading": "CHAPTER VIII.",
+      "subtitle": "The Queen's Croquet-Ground",
+      "counts": {
+        "joy": 33,
+        "trust": 30,
+        "anticipation": 46,
+        "surprise": 23,
+        "fear": 37,
+        "sadness": 36,
+        "disgust": 18,
+        "anger": 41
+      },
+      "examples": {
+        "joy": [
+          "garden",
+          "white",
+          "eager",
+          "smiling"
+        ],
+        "trust": [
+          "white",
+          "fact",
+          "eager",
+          "rule"
+        ],
+        "anticipation": [
+          "white",
+          "thought",
+          "watch",
+          "begun"
+        ],
+        "surprise": [
+          "suddenly",
+          "eager",
+          "procession",
+          "surprised"
+        ],
+        "fear": [
+          "watch",
+          "nervous",
+          "rule",
+          "afraid"
+        ],
+        "sadness": [
+          "fall",
+          "mistake",
+          "procession",
+          "lie"
+        ],
+        "disgust": [
+          "blame",
+          "lie",
+          "lying",
+          "humble"
+        ],
+        "anger": [
+          "elbow",
+          "blame",
+          "unjust",
+          "lie"
+        ]
+      },
+      "norm": {
+        "joy": 0.125,
+        "trust": 0.1136,
+        "anticipation": 0.1742,
+        "surprise": 0.0871,
+        "fear": 0.1402,
+        "sadness": 0.1364,
+        "disgust": 0.0682,
+        "anger": 0.1553
+      }
+    },
+    {
+      "chapter": 9,
+      "heading": "CHAPTER IX.",
+      "subtitle": "The Mock Turtle's Story",
+      "counts": {
+        "joy": 38,
+        "trust": 49,
+        "anticipation": 48,
+        "surprise": 23,
+        "fear": 23,
+        "sadness": 25,
+        "disgust": 14,
+        "anger": 24
+      },
+      "examples": {
+        "joy": [
+          "glad",
+          "pleasant",
+          "hopeful",
+          "pleased"
+        ],
+        "trust": [
+          "pleasant",
+          "hopeful",
+          "found",
+          "kind"
+        ],
+        "anticipation": [
+          "glad",
+          "pleasant",
+          "thought",
+          "hopeful"
+        ],
+        "surprise": [
+          "pleasant",
+          "hopeful",
+          "morals",
+          "experiment"
+        ],
+        "fear": [
+          "savage",
+          "rule",
+          "stingy",
+          "forgotten"
+        ],
+        "sadness": [
+          "stingy",
+          "forgotten",
+          "feeling",
+          "worried"
+        ],
+        "disgust": [
+          "sour",
+          "stingy",
+          "ugly",
+          "morals"
+        ],
+        "anger": [
+          "savage",
+          "stingy",
+          "moral",
+          "morals"
+        ]
+      },
+      "norm": {
+        "joy": 0.1557,
+        "trust": 0.2008,
+        "anticipation": 0.1967,
+        "surprise": 0.0943,
+        "fear": 0.0943,
+        "sadness": 0.1025,
+        "disgust": 0.0574,
+        "anger": 0.0984
+      }
+    },
+    {
+      "chapter": 10,
+      "heading": "CHAPTER X.",
+      "subtitle": "The Lobster Quadrille",
+      "counts": {
+        "joy": 48,
+        "trust": 37,
+        "anticipation": 40,
+        "surprise": 9,
+        "fear": 20,
+        "sadness": 23,
+        "disgust": 8,
+        "anger": 15
+      },
+      "examples": {
+        "joy": [
+          "delightful",
+          "dance",
+          "advance",
+          "pretty"
+        ],
+        "trust": [
+          "delightful",
+          "dance",
+          "top",
+          "pretty"
+        ],
+        "anticipation": [
+          "delightful",
+          "time",
+          "advance",
+          "top"
+        ],
+        "surprise": [
+          "advance",
+          "suddenly",
+          "feeling",
+          "curiosity"
+        ],
+        "fear": [
+          "shaking",
+          "lines",
+          "advance",
+          "change"
+        ],
+        "sadness": [
+          "interrupted",
+          "mad",
+          "sadly",
+          "sing"
+        ],
+        "disgust": [
+          "mad",
+          "feeling",
+          "dreadful",
+          "nose"
+        ],
+        "anger": [
+          "mad",
+          "words",
+          "feeling",
+          "offended"
+        ]
+      },
+      "norm": {
+        "joy": 0.24,
+        "trust": 0.185,
+        "anticipation": 0.2,
+        "surprise": 0.045,
+        "fear": 0.1,
+        "sadness": 0.115,
+        "disgust": 0.04,
+        "anger": 0.075
+      }
+    },
+    {
+      "chapter": 11,
+      "heading": "CHAPTER XI.",
+      "subtitle": "Who Stole the Tarts?",
+      "counts": {
+        "joy": 51,
+        "trust": 106,
+        "anticipation": 92,
+        "surprise": 35,
+        "fear": 66,
+        "sadness": 46,
+        "disgust": 18,
+        "anger": 56
+      },
+      "examples": {
+        "joy": [
+          "white",
+          "good",
+          "pleased",
+          "proud"
+        ],
+        "trust": [
+          "throne",
+          "guard",
+          "white",
+          "good"
+        ],
+        "anticipation": [
+          "white",
+          "court",
+          "good",
+          "hungry"
+        ],
+        "surprise": [
+          "good",
+          "chance",
+          "deal",
+          "larger"
+        ],
+        "fear": [
+          "guard",
+          "court",
+          "fear",
+          "hunting"
+        ],
+        "sadness": [
+          "soldier",
+          "interrupted",
+          "beg",
+          "leave"
+        ],
+        "disgust": [
+          "accusation",
+          "larger",
+          "ridiculous",
+          "wretched"
+        ],
+        "anger": [
+          "soldier",
+          "court",
+          "fear",
+          "indignant"
+        ]
+      },
+      "norm": {
+        "joy": 0.1085,
+        "trust": 0.2255,
+        "anticipation": 0.1957,
+        "surprise": 0.0745,
+        "fear": 0.1404,
+        "sadness": 0.0979,
+        "disgust": 0.0383,
+        "anger": 0.1191
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "source": "trust",
+      "target": "anticipation",
+      "count": 11,
+      "weight": 1.6622
+    },
+    {
+      "source": "joy",
+      "target": "anticipation",
+      "count": 11,
+      "weight": 1.4409
+    },
+    {
+      "source": "anticipation",
+      "target": "fear",
+      "count": 11,
+      "weight": 1.3702
+    },
+    {
+      "source": "joy",
+      "target": "trust",
+      "count": 11,
+      "weight": 1.3515
+    },
+    {
+      "source": "anticipation",
+      "target": "sadness",
+      "count": 11,
+      "weight": 1.3241
+    },
+    {
+      "source": "trust",
+      "target": "fear",
+      "count": 11,
+      "weight": 1.2403
+    },
+    {
+      "source": "joy",
+      "target": "fear",
+      "count": 11,
+      "weight": 1.1901
+    },
+    {
+      "source": "trust",
+      "target": "sadness",
+      "count": 11,
+      "weight": 1.1804
+    },
+    {
+      "source": "joy",
+      "target": "sadness",
+      "count": 11,
+      "weight": 1.1785
+    },
+    {
+      "source": "anticipation",
+      "target": "anger",
+      "count": 11,
+      "weight": 1.1752
+    },
+    {
+      "source": "fear",
+      "target": "sadness",
+      "count": 11,
+      "weight": 1.1525
+    },
+    {
+      "source": "fear",
+      "target": "anger",
+      "count": 11,
+      "weight": 1.1226
+    },
+    {
+      "source": "sadness",
+      "target": "anger",
+      "count": 11,
+      "weight": 1.1065
+    },
+    {
+      "source": "trust",
+      "target": "anger",
+      "count": 11,
+      "weight": 1.0703
+    },
+    {
+      "source": "joy",
+      "target": "anger",
+      "count": 11,
+      "weight": 1.0466
+    },
+    {
+      "source": "anticipation",
+      "target": "surprise",
+      "count": 11,
+      "weight": 0.957
+    },
+    {
+      "source": "joy",
+      "target": "surprise",
+      "count": 11,
+      "weight": 0.9502
+    },
+    {
+      "source": "trust",
+      "target": "surprise",
+      "count": 11,
+      "weight": 0.9446
+    },
+    {
+      "source": "surprise",
+      "target": "fear",
+      "count": 11,
+      "weight": 0.9225
+    },
+    {
+      "source": "surprise",
+      "target": "anger",
+      "count": 11,
+      "weight": 0.8882
+    },
+    {
+      "source": "surprise",
+      "target": "sadness",
+      "count": 11,
+      "weight": 0.8837
+    },
+    {
+      "source": "anticipation",
+      "target": "disgust",
+      "count": 11,
+      "weight": 0.6843
+    },
+    {
+      "source": "fear",
+      "target": "disgust",
+      "count": 11,
+      "weight": 0.6843
+    },
+    {
+      "source": "disgust",
+      "target": "anger",
+      "count": 11,
+      "weight": 0.6719
+    },
+    {
+      "source": "joy",
+      "target": "disgust",
+      "count": 11,
+      "weight": 0.6595
+    },
+    {
+      "source": "sadness",
+      "target": "disgust",
+      "count": 11,
+      "weight": 0.6549
+    },
+    {
+      "source": "surprise",
+      "target": "disgust",
+      "count": 11,
+      "weight": 0.6348
+    },
+    {
+      "source": "trust",
+      "target": "disgust",
+      "count": 11,
+      "weight": 0.6224
+    }
+  ]
+}

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Figurative Language — Chord Web</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-chord@3"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      background: #0f0e0c;
+      color: #e2d9cc;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      grid-template-rows: auto 1fr;
+      gap: 0;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      grid-column: 1 / -1;
+      padding: 18px 32px 10px;
+      border-bottom: 1px solid #2a2825;
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+    }
+    header h1 { font-size: 1.15rem; color: #c9a227; letter-spacing: 0.08em; }
+    header .sub { font-size: 11px; color: #666; }
+
+    #filter-btns { margin-left: auto; display: flex; gap: 8px; }
+    .filter-btn {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid #444;
+      background: transparent;
+      color: #aaa;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .filter-btn.active { color: #c9a227; border-color: #c9a227; }
+
+    /* ── Chord ── */
+    #chord-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    #chord-svg { display: block; }
+    .group-arc { cursor: pointer; stroke: #1a1916; stroke-width: 1px; }
+    .ribbon { cursor: pointer; transition: fill-opacity 0.15s; }
+    .ribbon:hover { stroke: #fff; stroke-width: 1px; fill-opacity: 0.9 !important; }
+    .ribbon.dimmed { fill-opacity: 0.08 !important; }
+    .group-label { pointer-events: none; font-size: 11px; }
+
+    /* ── Sidebar ── */
+    #sidebar {
+      border-left: 1px solid #2a2825;
+      padding: 20px 18px;
+      overflow-y: auto;
+      max-height: calc(100vh - 56px);
+    }
+    #sidebar h2 { font-size: 11px; color: #666; letter-spacing: 0.1em; margin-bottom: 14px; }
+    .pair-card {
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #222;
+    }
+    .pair-card .quote {
+      font-style: italic;
+      font-size: 12px;
+      color: #c9b899;
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+    .pair-card .meta {
+      font-size: 10px;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pair-card .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .badge {
+      font-size: 9px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+    }
+    .badge.simile   { background: #2a3a2a; color: #6daa72; }
+    .badge.metaphor { background: #2a2a3a; color: #7b68d4; }
+
+    #tooltip {
+      position: fixed;
+      padding: 8px 12px;
+      background: rgba(0,0,0,0.92);
+      border: 1px solid #555;
+      border-radius: 6px;
+      font-size: 12px;
+      max-width: 260px;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 99;
+      line-height: 1.6;
+    }
+    #tooltip .tp-pair { color: #c9a227; font-weight: bold; margin-bottom: 4px; }
+
+    #no-data {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+      color: #555;
+      font-size: 14px;
+      line-height: 2;
+    }
+    #no-data code {
+      background: #1a1a1a;
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Figurative Language — Chord Web</h1>
+    <span class="sub" id="hdr-sub">Loading…</span>
+    <div id="filter-btns">
+      <button class="filter-btn active" data-type="all">All</button>
+      <button class="filter-btn" data-type="simile">Simile</button>
+      <button class="filter-btn" data-type="metaphor">Metaphor</button>
+    </div>
+  </header>
+
+  <div id="chord-wrap">
+    <svg id="chord-svg" width="620" height="620"></svg>
+  </div>
+
+  <div id="sidebar">
+    <h2>PAIRS</h2>
+    <div id="pair-list"></div>
+  </div>
+
+  <div id="tooltip"></div>
+
+  <script>
+    const tooltip = document.getElementById("tooltip");
+    const hideTooltip = () => { tooltip.style.opacity = 0; };
+
+    // ── Color palette ─────────────────────────────────────────────────────────
+    const BASE_COLORS = [
+      "#4a90d9","#e05c2a","#6daa72","#b56aab","#d4a641",
+      "#c94444","#7ba8b5","#e8d48b","#a8c8a0","#d4826a",
+      "#8fa6cc","#a8c878","#cc8fa6","#c8a878","#78a8cc",
+      "#cc78a8","#a8cc78","#78cca8","#c8cc78","#a878cc"
+    ];
+    const colorOf = i => BASE_COLORS[i % BASE_COLORS.length];
+
+    let ALL_DATA = null;
+    let activeType = "all";
+
+    // ── Draw ──────────────────────────────────────────────────────────────────
+    function draw(data, typeFilter) {
+      const pairs = typeFilter === "all"
+        ? data.pairs
+        : data.pairs.filter(p => p.type === typeFilter);
+
+      const terms  = data.terms;
+      const n      = terms.length;
+      const termIdx = {};
+      terms.forEach((t, i) => { termIdx[t] = i; });
+
+      // Build matrix
+      const matrix = Array.from({ length: n }, () => new Array(n).fill(0));
+      pairs.forEach(p => {
+        const i = termIdx[p.source], j = termIdx[p.target];
+        if (i != null && j != null && i !== j) matrix[i][j] += 1;
+      });
+
+      // Lookup (i,j) → pairs
+      const lookup = {};
+      pairs.forEach(p => {
+        const i = termIdx[p.source], j = termIdx[p.target];
+        if (i == null || j == null) return;
+        const k = `${i}-${j}`;
+        if (!lookup[k]) lookup[k] = [];
+        lookup[k].push(p);
+      });
+
+      const W = 620, H = 620;
+      const outerR = Math.min(W, H) / 2 - 55;
+      const innerR = outerR - 22;
+
+      const chordFn = (d3.chordDirected || d3.chord)()
+        .padAngle(0.05)
+        .sortSubgroups(d3.descending);
+      const chords = chordFn(matrix);
+      const groups = chords.groups || [];
+      const ribbons = chords.filter(d => d.source && d.target &&
+        (d.source.value > 0 || d.target.value > 0));
+
+      const arc    = d3.arc().innerRadius(innerR).outerRadius(outerR);
+      const ribbon = d3.ribbon().radius(innerR - 2);
+
+      const svg = d3.select("#chord-svg")
+        .attr("viewBox", [0, 0, W, H]).html("");
+      const g = svg.append("g")
+        .attr("transform", `translate(${W/2},${H/2})`);
+
+      if (ribbons.length === 0) {
+        svg.append("text")
+          .attr("x", W/2).attr("y", H/2)
+          .attr("text-anchor","middle").attr("fill","#555")
+          .text("No pairs to show for this filter.");
+        return;
+      }
+
+      // Ribbons
+      const ribbonPaths = g.append("g").selectAll("path")
+        .data(ribbons).join("path")
+        .attr("class", "ribbon")
+        .attr("d", ribbon)
+        .attr("fill", d => colorOf(d.source.index))
+        .attr("fill-opacity", 0.6)
+        .on("mouseover", (e, d) => {
+          const si = d.source.index, ti = d.target.index;
+          const mets = lookup[`${si}-${ti}`] || lookup[`${ti}-${si}`] || [];
+          if (!mets.length) return;
+          const sym = mets[0].type === "metaphor" ? "=" : (mets[0].marker === "as...as" ? "as…as" : "like");
+          tooltip.innerHTML =
+            `<div class="tp-pair">${terms[si]} <span style="color:#aaa">${sym}</span> ${terms[ti]}</div>` +
+            mets.slice(0, 3).map(p =>
+              `<em>"${p.quote}"</em><br><span style="color:#666">(${p.type})</span>`
+            ).join("<br><br>");
+          tooltip.style.opacity = 1;
+          tooltip.style.left = (e.pageX + 14) + "px";
+          tooltip.style.top  = (e.pageY + 8)  + "px";
+          ribbonPaths.classed("dimmed", r => r !== d);
+        })
+        .on("mouseout", () => {
+          hideTooltip();
+          ribbonPaths.classed("dimmed", false);
+        });
+
+      // Arcs
+      g.append("g").selectAll("path")
+        .data(groups).join("path")
+        .attr("class", "group-arc")
+        .attr("d", arc)
+        .attr("fill", d => colorOf(d.index))
+        .attr("fill-opacity", 0.88)
+        .on("mouseover", (e, d) => {
+          tooltip.innerHTML = `<strong style="color:${colorOf(d.index)}">${terms[d.index]}</strong>`;
+          tooltip.style.opacity = 1;
+          tooltip.style.left = (e.pageX + 14) + "px";
+          tooltip.style.top  = (e.pageY + 8)  + "px";
+        })
+        .on("mouseout", hideTooltip);
+
+      // Labels — horizontal, anchored left/right, hidden when arc is tiny
+      const minArcSpan = 0.10;
+      g.append("g").selectAll("text")
+        .data(groups).join("text")
+        .attr("class", "group-label")
+        .attr("transform", d => {
+          const a = (d.startAngle + d.endAngle) / 2 - Math.PI / 2;
+          const r = outerR + 22;
+          return `translate(${Math.cos(a) * r},${Math.sin(a) * r})`;
+        })
+        .attr("text-anchor", d => {
+          const a = (d.startAngle + d.endAngle) / 2 - Math.PI / 2;
+          if (Math.abs(Math.cos(a)) < 0.15) return "middle";
+          return Math.cos(a) > 0 ? "start" : "end";
+        })
+        .attr("dy", "0.35em")
+        .attr("fill", d => colorOf(d.index))
+        .attr("opacity", d => (d.endAngle - d.startAngle) < minArcSpan ? 0 : 1)
+        .text(d => terms[d.index]);
+
+      // ── Sidebar ────────────────────────────────────────────────────────────
+      const listEl = document.getElementById("pair-list");
+      listEl.innerHTML = "";
+      pairs.slice(0, 60).forEach(p => {
+        const i = termIdx[p.source];
+        const div = document.createElement("div");
+        div.className = "pair-card";
+        const connector = p.type === "metaphor" ? "=" : (p.marker === "as...as" ? "as…as" : "like");
+        div.innerHTML = `
+          <div class="quote">"${p.quote}"</div>
+          <div class="meta">
+            <span class="dot" style="background:${colorOf(i ?? 0)}"></span>
+            <strong>${p.source}</strong>
+            <span style="color:#888;margin:0 4px">${connector}</span>
+            <strong>${p.target}</strong>
+            <span class="badge ${p.type}">${p.type}</span>
+          </div>`;
+        listEl.appendChild(div);
+      });
+      if (pairs.length > 60) {
+        const more = document.createElement("div");
+        more.style.cssText = "font-size:10px;color:#555;padding:6px 0";
+        more.textContent = `… and ${pairs.length - 60} more`;
+        listEl.appendChild(more);
+      }
+    }
+
+    // ── Header ────────────────────────────────────────────────────────────────
+    function updateHeader(data) {
+      const s = data.pairs.filter(p => p.type === "simile").length;
+      const m = data.pairs.filter(p => p.type === "metaphor").length;
+      document.getElementById("hdr-sub").textContent =
+        `${data.text}  ·  ${s} similes  ·  ${m} metaphors  ·  top ${data.terms.length} terms`;
+    }
+
+    // ── Filter buttons ────────────────────────────────────────────────────────
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeType = btn.dataset.type;
+        if (ALL_DATA) draw(ALL_DATA, activeType);
+      });
+    });
+
+    // ── Load ──────────────────────────────────────────────────────────────────
+    d3.json("figurative_pairs.json")
+      .then(data => {
+        ALL_DATA = data;
+        updateHeader(data);
+        draw(data, activeType);
+      })
+      .catch(() => {
+        document.body.innerHTML = `
+          <div id="no-data">
+            <p><strong style="color:#c66">figurative_pairs.json not found.</strong></p>
+            <p>Run the extractor first:</p>
+            <p><code>python extract_figurative.py</code></p>
+            <p>Then refresh this page (served via <code>python -m http.server 8765</code>).</p>
+          </div>`;
+      });
+  </script>
+</body>
+</html>

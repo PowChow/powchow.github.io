@@ -1,0 +1,173 @@
+{
+  "text": "carroll-alice.txt",
+  "terms": [
+    "alice",
+    "eyes",
+    "soon",
+    "mouse",
+    "silent",
+    "gone",
+    "name",
+    "large",
+    "beginning",
+    "candle",
+    "getting",
+    "pressed",
+    "looking",
+    "first",
+    "duchess",
+    "sitting",
+    "cook",
+    "dormouse",
+    "table",
+    "queen",
+    "wind",
+    "people",
+    "telescopes",
+    "'not",
+    "cats",
+    "frog",
+    "raven",
+    "writing-desk",
+    "moment",
+    "beast"
+  ],
+  "pairs": [
+    {
+      "source": "alice",
+      "target": "wind",
+      "type": "simile",
+      "marker": "like",
+      "quote": ": away went Alice like the wind , and",
+      "sentence": "There was not a moment to be lost: away went Alice like the wind, and\nwas just in time to hear it say, as it turned a corner, 'Oh my ears\nand whiskers"
+    },
+    {
+      "source": "people",
+      "target": "telescopes",
+      "type": "simile",
+      "marker": "like",
+      "quote": "for shutting people up like telescopes : this time",
+      "sentence": "There seemed to be no use in waiting by the little door, so she went\nback to the table, half hoping she might find another key on it, or at\nany rate a"
+    },
+    {
+      "source": "'not",
+      "target": "cats",
+      "type": "simile",
+      "marker": "like",
+      "quote": "'Not like cats ! '",
+      "sentence": "'Not like cats!'"
+    },
+    {
+      "source": "eyes",
+      "target": "frog",
+      "type": "simile",
+      "marker": "like",
+      "quote": ", and large eyes like a frog ; and",
+      "sentence": "It was opened\nby another footman in livery, with a round face, and large eyes like a\nfrog; and both footmen, Alice noticed, had powdered hair that cur"
+    },
+    {
+      "source": "raven",
+      "target": "writing-desk",
+      "type": "simile",
+      "marker": "like",
+      "quote": "'Why is a raven like a writing-desk ? '",
+      "sentence": "The Hatter opened his eyes very wide on hearing this; but all he SAID\nwas, 'Why is a raven like a writing-desk?'"
+    },
+    {
+      "source": "moment",
+      "target": "beast",
+      "type": "simile",
+      "marker": "like",
+      "quote": "her for a moment like a wild beast ,",
+      "sentence": "The Queen turned crimson with fury, and, after glaring at her for a\nmoment like a wild beast, screamed 'Off with her head!"
+    },
+    {
+      "source": "alice",
+      "target": "beginning",
+      "type": "metaphor",
+      "marker": "was",
+      "quote": "Alice was beginning",
+      "sentence": "Down the Rabbit-Hole\n\nAlice was beginning to get very tired of sitting by her sister on the\nbank, and of having nothing to do: once or twice she had p"
+    },
+    {
+      "source": "alice",
+      "target": "soon",
+      "type": "metaphor",
+      "marker": "was",
+      "quote": "Alice was soon",
+      "sentence": "On various pretexts they all moved off, and Alice was soon left alone."
+    },
+    {
+      "source": "duchess",
+      "target": "sitting",
+      "type": "metaphor",
+      "marker": "was",
+      "quote": "Duchess was sitting",
+      "sentence": "The door led right into a large kitchen, which was full of smoke from\none end to the other: the Duchess was sitting on a three-legged stool in\nthe mid"
+    },
+    {
+      "source": "eyes",
+      "target": "getting",
+      "type": "metaphor",
+      "marker": "were",
+      "quote": "eyes were getting",
+      "sentence": "There could be no doubt that it had\na VERY turn-up nose, much more like a snout than a real nose; also its\neyes were getting extremely small for a bab"
+    },
+    {
+      "source": "dormouse",
+      "target": "sitting",
+      "type": "metaphor",
+      "marker": "was",
+      "quote": "Dormouse was sitting",
+      "sentence": "A Mad Tea-Party\n\nThere was a table set out under a tree in front of the house, and the\nMarch Hare and the Hatter were having tea at it: a Dormouse was"
+    },
+    {
+      "source": "table",
+      "target": "large",
+      "type": "metaphor",
+      "marker": "was",
+      "quote": "table was a large",
+      "sentence": "The table was a large one, but the three were all crowded together at\none corner of it: 'No room!"
+    },
+    {
+      "source": "alice",
+      "target": "beginning",
+      "type": "metaphor",
+      "marker": "was",
+      "quote": "Alice was beginning",
+      "sentence": "Alice was beginning very angrily, but the\nHatter and the March Hare went 'Sh!"
+    },
+    {
+      "source": "alice",
+      "target": "silent",
+      "type": "metaphor",
+      "marker": "was",
+      "quote": "Alice was silent",
+      "sentence": "Alice was silent."
+    },
+    {
+      "source": "name",
+      "target": "alice",
+      "type": "metaphor",
+      "marker": "is",
+      "quote": "name is Alice",
+      "sentence": "'My name is Alice, so please your Majesty,' said Alice very politely;\nbut she added, to herself, 'Why, they're only a pack of cards, after\nall."
+    },
+    {
+      "source": "queen",
+      "target": "silent",
+      "type": "metaphor",
+      "marker": "was",
+      "quote": "Queen was\nsilent",
+      "sentence": "said Alice, very loudly and decidedly, and the Queen was\nsilent."
+    },
+    {
+      "source": "eyes",
+      "target": "looking",
+      "type": "metaphor",
+      "marker": "were",
+      "quote": "eyes were looking",
+      "sentence": "But her sister sat still just as she left her, leaning her head on her\nhand, watching the setting sun, and thinking of little Alice and all her\nwonder"
+    }
+  ]
+}

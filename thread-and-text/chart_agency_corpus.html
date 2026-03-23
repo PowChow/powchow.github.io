@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Agency Ratio Across Corpus — 1865–1925</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+      background: #f8f6fb;
+      color: #2a1e40;
+      display: grid;
+      grid-template-columns: 1fr 290px;
+      grid-template-rows: auto auto auto 1fr;
+      min-height: 100vh;
+    }
+
+    header {
+      grid-column: 1 / -1;
+      padding: 18px 32px 12px;
+      border-bottom: 1px solid #ddd4ea;
+      display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap;
+    }
+    header h1 { font-size: 1.1rem; color: #5a3a90; letter-spacing: 0.08em; }
+    header .sub { font-size: 11px; color: #7a6a9a; }
+
+    /* ── Period summary ── */
+    #period-summary {
+      grid-column: 1 / -1;
+      padding: 16px 32px;
+      border-bottom: 1px solid #ddd4ea;
+      display: flex; gap: 0; flex-wrap: wrap;
+    }
+    .period-block {
+      flex: 1;
+      padding: 12px 20px;
+      border-right: 1px solid #ddd4ea;
+      min-width: 160px;
+    }
+    .period-block:last-child { border: none; }
+    .period-name {
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .period-avg {
+      font-size: 2rem; line-height: 1;
+      margin-bottom: 6px;
+    }
+    .period-breakdown {
+      font-size: 10px; color: #7a6a9a;
+      display: flex; gap: 12px;
+    }
+    .period-breakdown span { display: flex; align-items: center; gap: 5px; }
+    .gender-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+
+    /* ── Insight bar ── */
+    #insight {
+      grid-column: 1 / -1;
+      padding: 12px 32px;
+      background: #eee8f5;
+      border-bottom: 1px solid #ddd4ea;
+      font-size: 12px; color: #5a3a90; font-style: italic;
+    }
+    #insight strong { color: #3a2060; font-style: normal; }
+
+    /* ── Charts area ── */
+    #charts-wrap {
+      padding: 28px 32px;
+      overflow-x: auto;
+      display: flex; flex-direction: column; gap: 40px;
+    }
+    .chart-section-label {
+      font-size: 10px; color: #7a6a9a;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .axis text  { fill: #5a4a7a; font-size: 10px; font-family: inherit; }
+    .axis line, .axis path { stroke: #ccc4da; }
+    .grid line { stroke: #e8e0f0; stroke-dasharray: 2 4; }
+
+    /* timeline */
+    .tl-dot { cursor: pointer; transition: r 0.15s; }
+    .tl-dot:hover { stroke: #3a2060; stroke-width: 1.5px; }
+    .tl-label { pointer-events: none; font-size: 10px; }
+    .tl-annotation { fill: #7a6a9a; font-size: 9px; }
+    .tl-line-19 { stroke: #b090e8; stroke-width: 1px; stroke-dasharray: 4 3; opacity: 0.5; }
+
+    /* bar chart */
+    .bc-bar { cursor: pointer; transition: opacity 0.15s; }
+    .bc-bar:hover { opacity: 0.85; }
+    .bc-label { fill: #5a4a7a; font-size: 10px; }
+
+    /* legend */
+    .legend { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 6px; }
+    .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: #5a4a7a; }
+
+    /* ── Sidebar ── */
+    #sidebar {
+      border-left: 1px solid #ddd4ea;
+      padding: 20px 18px;
+      overflow-y: auto;
+      grid-row: 3 / -1;
+    }
+    #sidebar h2 { font-size: 10px; color: #7a6a9a; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+    .book-card {
+      margin-bottom: 14px; padding-bottom: 12px;
+      border-bottom: 1px solid #e8e0f0;
+    }
+    .book-card .bc-title { font-size: 11px; color: #5a3a90; margin-bottom: 2px; }
+    .book-card .bc-author { font-size: 10px; color: #7a6a9a; margin-bottom: 6px; }
+    .book-card .ratio-bar-wrap {
+      height: 6px; background: #e8e0f0; border-radius: 3px; margin-bottom: 4px;
+    }
+    .book-card .ratio-bar { height: 6px; border-radius: 3px; }
+    .book-card .ratio-label { font-size: 9px; color: #7a6a9a; }
+    .book-card .verb-pills { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 5px; }
+    .verb-pill { font-size: 9px; padding: 1px 6px; border-radius: 8px; }
+    .verb-pill.agent   { background: #eee8f5; color: #5a3a90; border: 1px solid #ccc4da; }
+    .verb-pill.patient { background: #f0ecf5; color: #7a6a9a; border: 1px solid #ddd4ea; }
+
+    /* ── Tooltip ── */
+    #tooltip {
+      position: fixed; padding: 10px 14px;
+      background: rgba(255,255,255,0.97); border: 1px solid #ccc4da;
+      border-radius: 6px; font-size: 12px; max-width: 270px;
+      pointer-events: none; opacity: 0; z-index: 99; line-height: 1.8;
+      color: #2a1e40; box-shadow: 0 2px 8px rgba(90,58,144,0.12);
+    }
+
+    #no-data {
+      grid-column: 1/-1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 60px; color: #7a6a9a; font-size: 14px; line-height: 2;
+    }
+    #no-data code { background: #eee8f5; padding: 2px 6px; border-radius: 3px; color: #5a4a7a; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Protagonist Agency — 1865 to 1925</h1>
+    <span class="sub" id="hdr-sub">Loading…</span>
+  </header>
+  <div id="period-summary"></div>
+  <div id="insight"></div>
+
+  <div id="charts-wrap"></div>
+
+  <div id="sidebar">
+    <h2>All books</h2>
+    <div id="book-list"></div>
+  </div>
+
+  <div id="tooltip"></div>
+
+  <script>
+    const tooltip = document.getElementById("tooltip");
+    const hide    = () => { tooltip.style.opacity = 0; };
+
+    const PERIOD_COLOR = { pre_1920: "#6a50b8", at_1920: "#b090e8", post_1920: "#e8c060" };
+    const PERIOD_LABEL = { pre_1920: "Pre-1920", at_1920: "1920", post_1920: "Post-1920" };
+    const GENDER_COLOR = { female: "#e880b0", male: "#60b0e8" };
+
+    d3.json("agency_corpus.json?v=" + Date.now()).then(data => {
+
+      const books   = data.books;
+      const summary = data.period_summary;
+
+      // ── Header ──────────────────────────────────────────────────────────────
+      document.getElementById("hdr-sub").textContent =
+        `${books.length} texts  ·  female protagonists  ·  agent vs. patient sentence ratio`;
+
+      // ── Period summary strip ─────────────────────────────────────────────────
+      const sumEl = document.getElementById("period-summary");
+      ["pre_1920","at_1920","post_1920"].forEach(p => {
+        if (!summary[p]) return;
+        const s = summary[p];
+        const col = PERIOD_COLOR[p];
+        sumEl.innerHTML += `
+          <div class="period-block">
+            <div class="period-name" style="color:${col}">${PERIOD_LABEL[p]}</div>
+            <div class="period-avg" style="color:${col}">${Math.round(s.avg_ratio*100)}%</div>
+            <div class="period-breakdown">
+              <span><span class="gender-dot" style="background:${GENDER_COLOR.female}"></span>
+                F-authored ${Math.round(s.female_avg*100)}%</span>
+              <span><span class="gender-dot" style="background:${GENDER_COLOR.male}"></span>
+                M-authored ${Math.round(s.male_avg*100)}%</span>
+            </div>
+          </div>`;
+      });
+
+      // ── Insight ──────────────────────────────────────────────────────────────
+      document.getElementById("insight").innerHTML =
+        `<strong>Key finding:</strong> Protagonist agency drops from an average of
+         <strong>${Math.round(summary.pre_1920.avg_ratio*100)}%</strong> pre-1920 to
+         <strong>${Math.round((summary.at_1920?.avg_ratio||0)*100)}%</strong> at the Amendment
+         to <strong>${Math.round((summary.post_1920?.avg_ratio||0)*100)}%</strong> after —
+         suggesting the legal change did not immediately translate into more agentive
+         literary language around women. Ellen Olenska (<em>Age of Innocence</em>, 0.21)
+         and Daisy Buchanan (<em>The Great Gatsby</em>, 0.28) are the least agentive
+         protagonists in the corpus.`;
+
+      const chartsWrap = document.getElementById("charts-wrap");
+
+      // ── 1. Timeline scatter plot ─────────────────────────────────────────────
+      {
+        const label = document.createElement("div");
+        label.className = "chart-section-label";
+        label.textContent = "Agency ratio over time — each dot is one text";
+        chartsWrap.appendChild(label);
+
+        const margin = { top: 20, right: 30, bottom: 40, left: 50 };
+        const W = 740, H = 220;
+        const w = W - margin.left - margin.right;
+        const h = H - margin.top - margin.bottom;
+
+        const svgEl = document.createElementNS("http://www.w3.org/2000/svg","svg");
+        svgEl.setAttribute("width", W); svgEl.setAttribute("height", H);
+        chartsWrap.appendChild(svgEl);
+
+        const svg = d3.select(svgEl);
+        const g   = svg.append("g").attr("transform",`translate(${margin.left},${margin.top})`);
+
+        const x = d3.scaleLinear().domain([1860, 1930]).range([0, w]);
+        const y = d3.scaleLinear().domain([0, 0.65]).range([h, 0]);
+
+        // Grid
+        g.append("g").attr("class","grid")
+          .call(d3.axisLeft(y).tickSize(-w).tickFormat("").ticks(5))
+          .call(ax => ax.select(".domain").remove());
+
+        // 1920 annotation
+        g.append("line").attr("class","tl-line-19")
+          .attr("x1",x(1920)).attr("x2",x(1920))
+          .attr("y1",0).attr("y2",h);
+        g.append("text").attr("class","tl-annotation")
+          .attr("x",x(1920)+4).attr("y",10).text("19th Amendment →");
+
+        // Axes
+        g.append("g").attr("class","axis").attr("transform",`translate(0,${h})`)
+          .call(d3.axisBottom(x).tickFormat(d3.format("d")).ticks(8));
+        g.append("g").attr("class","axis")
+          .call(d3.axisLeft(y).tickFormat(d => Math.round(d*100)+"%").ticks(5));
+
+        // Trend line (simple linear regression)
+        const xVals = books.map(b => b.year);
+        const yVals = books.map(b => b.ratio);
+        const n = books.length;
+        const xm = d3.mean(xVals), ym = d3.mean(yVals);
+        const slope = d3.sum(books, b => (b.year-xm)*(b.ratio-ym)) /
+                      d3.sum(books, b => (b.year-xm)**2);
+        const intercept = ym - slope * xm;
+        const x1t = 1860, x2t = 1930;
+        g.append("line")
+          .attr("x1",x(x1t)).attr("x2",x(x2t))
+          .attr("y1",y(slope*x1t+intercept)).attr("y2",y(slope*x2t+intercept))
+          .attr("stroke","#5a3a90").attr("stroke-width",1.5)
+          .attr("stroke-dasharray","6 3");
+
+        // Dots
+        g.selectAll(".tl-dot").data(books).join("circle")
+          .attr("class","tl-dot")
+          .attr("cx", b => x(b.year))
+          .attr("cy", b => y(b.ratio))
+          .attr("r",  b => Math.max(5, Math.sqrt(b.mentions / 8)))
+          .attr("fill", b => PERIOD_COLOR[b.period])
+          .attr("fill-opacity", 0.85)
+          .attr("stroke", b => GENDER_COLOR[b.author_gender])
+          .attr("stroke-width", 2)
+          .on("mouseover", (e, b) => {
+            const agVbs = (b.top_verbs.agent||[]).slice(0,3).map(v=>v.verb).join(", ");
+            const ptVbs = (b.top_verbs.patient||[]).slice(0,3).map(v=>v.verb).join(", ");
+            tooltip.innerHTML =
+              `<strong style="color:${PERIOD_COLOR[b.period]}">${b.title}</strong><br>` +
+              `<span style="color:${GENDER_COLOR[b.author_gender]}">${b.author}</span>
+               · ${b.year}<br>` +
+              `Agent: <strong>${Math.round(b.ratio*100)}%</strong>
+               (${b.counts.agent} agent, ${b.counts.patient} patient)<br>` +
+              (agVbs ? `<span style="color:#6a50b8">acting: ${agVbs}</span><br>` : "") +
+              (ptVbs ? `<span style="color:#3a2860">patient: ${ptVbs}</span>` : "");
+            tooltip.style.opacity = 1;
+            tooltip.style.left = (e.pageX+14)+"px";
+            tooltip.style.top  = (e.pageY+8)+"px";
+          })
+          .on("mouseout", hide);
+
+        // Labels
+        g.selectAll(".tl-label").data(books).join("text")
+          .attr("class","tl-label")
+          .attr("x", b => x(b.year))
+          .attr("y", b => y(b.ratio) - Math.max(5, Math.sqrt(b.mentions/8)) - 4)
+          .attr("text-anchor","middle")
+          .attr("fill", b => PERIOD_COLOR[b.period])
+          .text(b => b.protagonist);
+
+        // Legend
+        const legDiv = document.createElement("div");
+        legDiv.className = "legend";
+        legDiv.innerHTML =
+          Object.entries(PERIOD_COLOR).map(([p,c]) =>
+            `<div class="legend-item">
+               <div style="width:10px;height:10px;border-radius:50%;background:${c}"></div>
+               ${PERIOD_LABEL[p]}
+             </div>`).join("") +
+          Object.entries(GENDER_COLOR).map(([g,c]) =>
+            `<div class="legend-item">
+               <div style="width:10px;height:10px;border-radius:50%;
+                    background:transparent;border:2px solid ${c}"></div>
+               ${g}-authored
+             </div>`).join("") +
+          `<div class="legend-item" style="color:#5a3a90">
+             ◯ dot size = protagonist mentions
+           </div>`;
+        chartsWrap.appendChild(legDiv);
+      }
+
+      // ── 2. Bar chart sorted by ratio ─────────────────────────────────────────
+      {
+        const spacer = document.createElement("div");
+        chartsWrap.appendChild(spacer);
+
+        const label = document.createElement("div");
+        label.className = "chart-section-label";
+        label.textContent = "Agency ratio by book — stacked agent vs. patient sentences";
+        chartsWrap.appendChild(label);
+
+        const sorted  = [...books].sort((a,b) => b.ratio - a.ratio);
+        const margin  = { top: 10, right: 120, bottom: 80, left: 20 };
+        const W = 740, H = 180;
+        const w = W - margin.left - margin.right;
+        const h = H - margin.top - margin.bottom;
+
+        const svgEl = document.createElementNS("http://www.w3.org/2000/svg","svg");
+        svgEl.setAttribute("width", W); svgEl.setAttribute("height", H);
+        chartsWrap.appendChild(svgEl);
+
+        const svg = d3.select(svgEl);
+        const g   = svg.append("g").attr("transform",`translate(${margin.left},${margin.top})`);
+
+        const x = d3.scaleBand().domain(sorted.map(b=>b.id)).range([0,w]).padding(0.2);
+        const maxT = d3.max(sorted, b => b.counts.agent + b.counts.patient);
+        const y = d3.scaleLinear().domain([0, maxT]).range([h, 0]);
+
+        // Stacked bars
+        sorted.forEach(b => {
+          const total  = b.counts.agent + b.counts.patient || 1;
+          const agentH = (b.counts.agent  / total) * h;
+          const patH   = (b.counts.patient / total) * h;
+          const bx = x(b.id);
+          const bw = x.bandwidth();
+          const col = PERIOD_COLOR[b.period];
+
+          // total height bar (patient)
+          g.append("rect").attr("class","bc-bar")
+            .attr("x",bx).attr("y",0).attr("width",bw).attr("height",h)
+            .attr("fill","#e8e0f0").attr("rx",2);
+
+          // agent portion
+          g.append("rect").attr("class","bc-bar")
+            .attr("x",bx).attr("y",h-agentH).attr("width",bw).attr("height",agentH)
+            .attr("fill",col).attr("fill-opacity",0.85).attr("rx",2)
+            .on("mouseover",(e)=>{
+              tooltip.innerHTML =
+                `<strong style="color:${col}">${b.title}</strong><br>` +
+                `<strong>${Math.round(b.ratio*100)}%</strong> agent ratio<br>` +
+                `${b.counts.agent} agent · ${b.counts.patient} patient sentences`;
+              tooltip.style.opacity=1;
+              tooltip.style.left=(e.pageX+14)+"px";
+              tooltip.style.top=(e.pageY+8)+"px";
+            })
+            .on("mouseout", hide);
+
+          // ratio label
+          g.append("text")
+            .attr("x",bx+bw/2).attr("y",h-agentH-4)
+            .attr("text-anchor","middle").attr("fill",col).attr("font-size",9)
+            .text(Math.round(b.ratio*100)+"%");
+        });
+
+        // X labels
+        g.append("g").attr("transform",`translate(0,${h})`).selectAll("text")
+          .data(sorted).join("text")
+          .attr("x", b => x(b.id)+x.bandwidth()/2)
+          .attr("y", 14).attr("text-anchor","end")
+          .attr("transform", b => `rotate(-35,${x(b.id)+x.bandwidth()/2},14)`)
+          .attr("fill", b => PERIOD_COLOR[b.period]).attr("font-size",10)
+          .attr("font-family","inherit")
+          .text(b => b.protagonist + " (" + b.year + ")");
+
+        // Y axis label
+        svg.append("text")
+          .attr("transform","rotate(-90)").attr("x",-H/2).attr("y",W-15)
+          .attr("text-anchor","middle").attr("font-size",9).attr("fill","#3a2860")
+          .text("sentences");
+      }
+
+      // ── Sidebar ──────────────────────────────────────────────────────────────
+      const listEl = document.getElementById("book-list");
+      const sorted = [...books].sort((a,b) => a.year - b.year);
+      sorted.forEach(b => {
+        const col = PERIOD_COLOR[b.period];
+        const agVbs = (b.top_verbs.agent||[]).slice(0,3).map(v=>v.verb);
+        const ptVbs = (b.top_verbs.patient||[]).slice(0,3).map(v=>v.verb);
+        const div = document.createElement("div");
+        div.className = "book-card";
+        div.innerHTML = `
+          <div class="bc-title" style="color:${col}">${b.title} (${b.year})</div>
+          <div class="bc-author" style="color:${GENDER_COLOR[b.author_gender]}">
+            ${b.author}
+          </div>
+          <div class="ratio-bar-wrap">
+            <div class="ratio-bar" style="width:${b.ratio*100}%;background:${col}"></div>
+          </div>
+          <div class="ratio-label">${Math.round(b.ratio*100)}% agent
+            · ${b.counts.agent}A / ${b.counts.patient}P</div>
+          <div class="verb-pills">
+            ${agVbs.map(v=>`<span class="verb-pill agent">${v}</span>`).join("")}
+            ${ptVbs.map(v=>`<span class="verb-pill patient">${v}</span>`).join("")}
+          </div>`;
+        listEl.appendChild(div);
+      });
+
+    }).catch(() => {
+      document.body.innerHTML = `<div id="no-data">
+        <p><strong style="color:#c66">agency_corpus.json not found.</strong></p>
+        <p>Run: <code>python extract_agency_corpus.py</code></p>
+      </div>`;
+    });
+  </script>
+</body>
+</html>
