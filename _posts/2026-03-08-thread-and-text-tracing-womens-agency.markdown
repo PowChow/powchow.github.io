@@ -38,11 +38,11 @@ Agency ratio confirms the pattern: the year 1920 averages 34%, below the pre-192
 
 Explore the prototypes:
 
-- [**Agency Ratio Across Corpus**](/thread-and-text/chart_agency_corpus.html) — A bar chart comparing grammatical agency across thirteen novels, grouped by period and author gender.
-- [**Shared Verb Web**](/thread-and-text/chord_agency_web_light.html) — A chord diagram mapping the verbs protagonists share across texts and time.
-- [**Figurative Language Mapper**](/thread-and-text/chord_figurative.html) — Similes and metaphors extracted from Alice in Wonderland as a proof-of-concept.
-- [**Emotion Arc Mapper**](/thread-and-text/chord_emotions.html) — NRC emotion co-occurrence by chapter.
-- [**Word Association Web**](/thread-and-text/chord_word_assoc.html) — Noun co-occurrence networks.
+- [**Agency Ratio Across Corpus**](https://powchow.github.io/thread-and-text/chart_agency_corpus.html) — A bar chart comparing grammatical agency across thirteen novels, grouped by period and author gender.
+- [**Shared Verb Web**](https://powchow.github.io/thread-and-text/chord_agency_web_light.html) — A chord diagram mapping the verbs protagonists share across texts and time.
+- [**Figurative Language Mapper**](https://powchow.github.io/thread-and-text/chord_figurative.html) — Similes and metaphors extracted from Alice in Wonderland as a proof-of-concept.
+- [**Emotion Arc Mapper**](https://powchow.github.io/thread-and-text/chord_emotions.html) — NRC emotion co-occurrence by chapter.
+- [**Word Association Web**](https://powchow.github.io/thread-and-text/chord_word_assoc.html) — Noun co-occurrence networks.
 
 ## The Physical Work
 
